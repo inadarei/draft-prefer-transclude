@@ -45,7 +45,7 @@
         <section title="Transclude Usage Example" anchor="transclude-example">
         <figure>
             <preamble>
-        Following is an example of a client asking server to transclude data represented at the copyright, edit-form and "other-form" links. Since "other-form" is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.
+    Following is an example of a client asking server to transclude data represented at the copyright, edit-form and "other-form" links. Since "other-form" is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.
             </preamble>
             <artwork>
     Get /blog/1223 HTTP/1.1
@@ -54,10 +54,10 @@
     Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
     Vary: Prefer,Accept,Accept-Encoding
             </artwork>
-        </figure>
         <postamble>
-        As you can see from the example, the transclude preference expects the value to be enclosed in double quotes, if there're multiple link relation types provided. Further, standard link relations SHOULD be indicated by name while custom link relation types SHOULD be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolons.
+    As you can see from the example, the transclude preference expects the value to be enclosed in double quotes, if there're multiple link relation types provided. Further, standard link relations SHOULD be indicated by name while custom link relation types SHOULD be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolons.
         </postamble>
+        </figure>
         </section>
         <section title="Security Considerations">
         <t>None.</t>

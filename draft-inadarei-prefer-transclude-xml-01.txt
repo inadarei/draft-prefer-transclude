@@ -139,11 +139,18 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
    Since "other-form" is not a standard, IANA link relation type, client
    is using a URI for identifying the link relation type.
 
-       Get /blog/1223 HTTP/1.1
-       Host: api.example.org
-       Content-Type: application/json
-       Prefer: transclude=copyright,edit-form,http://rels.io/other-form
-       Vary: Prefer,Accept,Accept-Encoding
+      Get /blog/1223 HTTP/1.1
+      Host: api.example.org
+      Content-Type: application/json
+      Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
+      Vary: Prefer,Accept,Accept-Encoding
+
+   As you can see from the example, the transclude preference expects
+   the value to be enclosed in double quotes, if there're multiple link
+   relation types provided.  Further, standard link relations SHOULD be
+   indicated by name while custom link relation types SHOULD be
+   indicated with a unique URI representing that link relation.
+   Multiple link relation types MUST be separated by semicolons.
 
 4.  Security Considerations
 
@@ -156,13 +163,6 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
    [RFC5988]  Nottingham, M., "Web Linking (RFC-5988)", RFC 5988,
               October 2010.
 
-   [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
-              June 2014.
-
-
-
-
-
 
 
 Nadareishvili            Expires March 19, 2017                 [Page 3]
@@ -170,14 +170,14 @@ Nadareishvili            Expires March 19, 2017                 [Page 3]
 Internet-Draft         Transclude for HTTP Prefer         September 2016
 
 
+   [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
+              June 2014.
+
 Author's Address
 
    Irakli Nadareishvili
 
    URI:   http://freshblurbs.com
-
-
-
 
 
 

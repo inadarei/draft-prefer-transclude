@@ -474,9 +474,10 @@
     Get /blog/1223 HTTP/1.1
     Host: api.example.org
     Content-Type: application/json  
-    Prefer: transclude=copyright,edit-form,http://rels.io/other-form
+    Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
     Vary: Prefer,Accept,Accept-Encoding
             </pre>
+<p>As you can see from the example, the transclude preference expects the value to be enclosed in double quotes, if there're multiple link relation types provided. Further, standard link relations SHOULD be indicated by name while custom link relation types SHOULD be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolons.  </p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> Security Considerations</h1>
 <p id="rfc.section.4.p.1">None.</p>
 <h1 id="rfc.references"><a href="#rfc.references">5.</a> Normative References</h1>
