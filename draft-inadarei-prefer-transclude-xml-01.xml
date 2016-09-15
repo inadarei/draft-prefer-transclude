@@ -10,7 +10,7 @@
 <rfc ipr="trust200902" docName="draft-inadarei-prefer-transclude-xml-01" category="info">
 
     <front>
-        <title abbrev="Transclude for HTTP Prefer">Transclude preference for the  Prefer Header for HTTP (RFC-7240)</title>
+        <title abbrev="Transclude for HTTP Prefer">Transclude Preference for the  Prefer Header for HTTP (RFC-7240)</title>
         <author initials='I.' surname="Nadareishvili" fullname='Irakli Nadareishvili'>
             <organization/>
             <address>
@@ -32,6 +32,13 @@
             "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
             and "OPTIONAL" in this document are to be interpreted as
             described in <xref target="RFC2119"/>.</t>
+        </section>
+
+        <section title="Introduction">
+            <t>"Prefer Header for HTTP" <xref target="RFC7240" /> proposes a new HTTP header that is used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as "return" preference which lets the server know that the client would prefer specific representation of a resource, e.g. full vs. minimal.</t>
+            <t>In the age of mobile applications that are very sensitive to network latency and throughput, this allows servers to tune and optimize its response payload based on client preferences, for instance: to only sent a mobile app minimal payload when it doesn't full response.</t>
+            <t>Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. This can cause issues for certain clients, such as mobile applications, if they are forced to make multiple requests to get to the needed data.</t>
+            <t>Transclude preference notifies the server that the client would prefer the server to proactively transclude certain links (as identified by their link relations) so that once the client receives the resulting payload all of the required content is already embedded in the output.</t>
         </section>
 
         <section title="Security Considerations">
@@ -56,16 +63,30 @@
             </reference>      
             <reference anchor='RFC2119'>
                 <front>
-                <title>FC-2119</title>
+                <title>RFC-2119</title>
                 <author initials='S' surname='Bradner' fullname='Scott Bradner'>
                     <organization />
                 </author>
                 <date month='March' year='1997' />
                 <abstract>
-                    <t> Key words for use in RFCs to Indicate Requirement Levels.</t>
+                    <t>Key words for use in RFCs to Indicate Requirement Levels.</t>
                 </abstract>
                 </front>
-                <seriesInfo name="RFC" value="72221940" />
+                <seriesInfo name="RFC" value="2119" />
+            </reference>
+            <reference anchor='RFC5988'>
+                <front>
+                <title>Web Linking (RFC-5988)</title>
+                <author initials='M' surname='Nottingham' fullname='Mark Nottingham'>
+                    <organization />
+                </author>
+                <date month='October' year='2010' />
+                <abstract>
+                    <t>This document specifies relation types for Web links, and defines a registry for them.  It also defines the use of such links in HTTP headers with the Link header field.</t>
+                </abstract>
+                </front>
+                <seriesInfo name="RFC" value="5988" />
+            
             </reference>  
         </references>
     </back>

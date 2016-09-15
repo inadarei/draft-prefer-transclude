@@ -8,7 +8,7 @@ Intended status: Informational
 Expires: March 19, 2017
 
 
-    Transclude preference for the Prefer Header for HTTP (RFC-7240)
+    Transclude Preference for the Prefer Header for HTTP (RFC-7240)
                 draft-inadarei-prefer-transclude-xml-01
 
 Abstract
@@ -69,9 +69,10 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
 Table of Contents
 
    1.  Requirements notation . . . . . . . . . . . . . . . . . . . .   2
-   2.  Security Considerations . . . . . . . . . . . . . . . . . . .   2
-   3.  Normative References  . . . . . . . . . . . . . . . . . . . .   2
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   4.  Normative References  . . . . . . . . . . . . . . . . . . . .   3
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
 
 1.  Requirements notation
 
@@ -79,13 +80,53 @@ Table of Contents
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
 
-2.  Security Considerations
+2.  Introduction
+
+   "Prefer Header for HTTP" [RFC7240] proposes a new HTTP header that is
+   used to indicate that particular server behaviors are preferred by
+   the client but are not required for successful completion of the
+   request.  It further defines several standard Preferences, such as
+   "return" preference which lets the server know that the client would
+   prefer specific representation of a resource, e.g. full vs. minimal.
+
+   In the age of mobile applications that are very sensitive to network
+   latency and throughput, this allows servers to tune and optimize its
+   response payload based on client preferences, for instance: to only
+   sent a mobile app minimal payload when it doesn't full response.
+
+   Closely related to the size of the payload, is the number of HTTP
+   requests a client needs to make to get all of the required data.
+   When server sends hypermedia responses (e.g. in the case of
+   Hypermedia APIs) some of the response data may be referenced via a
+   URI link instead of being embedded in the payload itself.  This can
+   cause issues for certain clients, such as mobile applications, if
+   they are forced to make multiple requests to get to the needed data.
+
+   Transclude preference notifies the server that the client would
+   prefer the server to proactively transclude certain links (as
+   identified by their link relations) so that once the client receives
+
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 2]
+
+Internet-Draft         Transclude for HTTP Prefer         September 2016
+
+
+   the resulting payload all of the required content is already embedded
+   in the output.
+
+3.  Security Considerations
 
    None.
 
-3.  Normative References
+4.  Normative References
 
-   [RFC2119]  Bradner, S., "FC-2119", RFC 72221940, March 1997.
+   [RFC2119]  Bradner, S., "RFC-2119", RFC 2119, March 1997.
+
+   [RFC5988]  Nottingham, M., "Web Linking (RFC-5988)", RFC 5988,
+              October 2010.
 
    [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
               June 2014.
@@ -109,4 +150,19 @@ Author's Address
 
 
 
-Nadareishvili            Expires March 19, 2017                 [Page 2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 3]

@@ -5,7 +5,7 @@
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-  <title>Transclude preference for the  Prefer Header for HTTP (RFC-7240)</title>
+  <title>Transclude Preference for the  Prefer Header for HTTP (RFC-7240)</title>
 
   <style type="text/css" title="Xml2Rfc (sans serif)">
   /*<![CDATA[*/
@@ -375,8 +375,9 @@
 
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Requirements notation"/>
-<link href="#rfc.section.2" rel="Chapter" title="2 Security Considerations"/>
-<link href="#rfc.references" rel="Chapter" title="3 Normative References"/>
+<link href="#rfc.section.2" rel="Chapter" title="2 Introduction"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations"/>
+<link href="#rfc.references" rel="Chapter" title="4 Normative References"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -417,7 +418,7 @@
     </tbody>
   </table>
 
-  <p class="title">Transclude preference for the  Prefer Header for HTTP (RFC-7240)<br />
+  <p class="title">Transclude Preference for the  Prefer Header for HTTP (RFC-7240)<br />
   <span class="filename">draft-inadarei-prefer-transclude-xml-01</span></p>
   
   <h1 id="rfc.abstract">
@@ -448,8 +449,9 @@
   <ul class="toc">
 
   	<li>1.   <a href="#rfc.section.1">Requirements notation</a></li>
-<li>2.   <a href="#rfc.section.2">Security Considerations</a></li>
-<li>3.   <a href="#rfc.references">Normative References</a></li>
+<li>2.   <a href="#rfc.section.2">Introduction</a></li>
+<li>3.   <a href="#rfc.section.3">Security Considerations</a></li>
+<li>4.   <a href="#rfc.references">Normative References</a></li>
 <li><a href="#rfc.authors">Author's Address</a></li>
 
 
@@ -457,16 +459,27 @@
 
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Requirements notation</h1>
 <p id="rfc.section.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">[RFC2119]</a>.</p>
-<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Security Considerations</h1>
-<p id="rfc.section.2.p.1">None.</p>
-<h1 id="rfc.references"><a href="#rfc.references">3.</a> Normative References</h1>
+<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Introduction</h1>
+<p id="rfc.section.2.p.1">"Prefer Header for HTTP" <a href="#RFC7240">[RFC7240]</a> proposes a new HTTP header that is used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as "return" preference which lets the server know that the client would prefer specific representation of a resource, e.g. full vs. minimal.</p>
+<p id="rfc.section.2.p.2">In the age of mobile applications that are very sensitive to network latency and throughput, this allows servers to tune and optimize its response payload based on client preferences, for instance: to only sent a mobile app minimal payload when it doesn't full response.</p>
+<p id="rfc.section.2.p.3">Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. This can cause issues for certain clients, such as mobile applications, if they are forced to make multiple requests to get to the needed data.</p>
+<p id="rfc.section.2.p.4">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain links (as identified by their link relations) so that once the client receives the resulting payload all of the required content is already embedded in the output.</p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Security Considerations</h1>
+<p id="rfc.section.3.p.1">None.</p>
+<h1 id="rfc.references"><a href="#rfc.references">4.</a> Normative References</h1>
 <table>
   <tbody>
     <tr>
       <td class="reference">
         <b id="RFC2119">[RFC2119]</b>
       </td>
-      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc72221940">FC-2119</a>", RFC 72221940, March 1997.</td>
+      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">RFC-2119</a>", RFC 2119, March 1997.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC5988">[RFC5988]</b>
+      </td>
+      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking (RFC-5988)</a>", RFC 5988, October 2010.</td>
     </tr>
     <tr>
       <td class="reference">
