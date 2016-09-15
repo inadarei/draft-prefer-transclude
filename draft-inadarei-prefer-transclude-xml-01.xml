@@ -76,7 +76,7 @@
         </figure>
         </section>
         <section title="Implementation Considerations" anchor="implementation">
-            <t>Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will depend on a media-type. For instance, where the transcluded data appears in the response will be different for Hypermedia Application Language (HAL) compared to HTML or Collection+JSON media type.</t> 
+            <t>Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on a response media-type or require a multi-part response with multiple media types in the response.</t> 
         </section>
         <section title="IANA Considerations" anchor="iana">
         <t>TBD</t>
