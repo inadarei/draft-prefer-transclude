@@ -142,7 +142,7 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
        Get /blog/1223 HTTP/1.1
        Host: api.example.org
        Content-Type: application/json
-       Prefer: transclude=copyright,edit-form,http://rels.com/other-form
+       Prefer: transclude=copyright,edit-form,http://rels.io/other-form
        Vary: Prefer,Accept,Accept-Encoding
 
 4.  Security Considerations
