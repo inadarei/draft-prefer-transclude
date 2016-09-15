@@ -71,9 +71,11 @@ Table of Contents
    1.  Requirements notation . . . . . . . . . . . . . . . . . . . .   2
    2.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    3.  Transclude Usage Example  . . . . . . . . . . . . . . . . . .   3
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
-   5.  Normative References  . . . . . . . . . . . . . . . . . . . .   3
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   4.  Implementation Considerations . . . . . . . . . . . . . . . .   4
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Requirements notation
 
@@ -103,8 +105,6 @@ Table of Contents
    The size of the payload is not the only preference that can improve
    user-experience in mobile scenarios, however.  Closely related to the
    size of the payload, is the number of HTTP requests a client needs to
-   make to get all of the required data.  This is the challenge that
-   "transclude" preference addresses.
 
 
 
@@ -113,6 +113,9 @@ Nadareishvili            Expires March 19, 2017                 [Page 2]
 
 Internet-Draft         Transclude for HTTP Prefer         September 2016
 
+
+   make to get all of the required data.  This is the challenge that
+   "transclude" preference addresses.
 
    When server sends hypermedia responses (e.g. in the case of
    Hypermedia APIs) some of the response data may be referenced via a
@@ -152,16 +155,13 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
    indicated with a unique URI representing that link relation.
    Multiple link relation types MUST be separated by semicolons.
 
-4.  Security Considerations
 
-   None.
 
-5.  Normative References
 
-   [RFC2119]  Bradner, S., "RFC-2119", RFC 2119, March 1997.
 
-   [RFC5988]  Nottingham, M., "Web Linking (RFC-5988)", RFC 5988,
-              October 2010.
+
+
+
 
 
 
@@ -170,8 +170,61 @@ Nadareishvili            Expires March 19, 2017                 [Page 3]
 Internet-Draft         Transclude for HTTP Prefer         September 2016
 
 
+   Example response may look something like the following:
+
+       HTTP/1.1 200 OK
+       Server: nginx/1.4.6 (Ubuntu)
+       Date: Sat, 27 Jun 2015 11:03:32 GMT
+       Content-Type: application/json; charset=utf-8
+       Transfer-Encoding: chunked
+       Connection: close
+       Vary: Prefer,Accept,Accept-Encoding
+       Preference-Applied: transclude="copyright;edit-form"
+       Access-Control-Allow-Origin: *
+       Access-Control-Allow-Headers: Content-Type
+
+   As you can see from this output, server only transcluded copyright
+   and edit-form link relation types, but not the cusotm type client
+   requested.  This is because preferences are just suggestions and
+   server has no obligation related to them.  In this case, we can
+   assume that the server skipped the last link relation type because
+   maybe it wasn't familiar with it, or for some other reason.
+
+4.  Implementation Considerations
+
+   Transclude preference is media-type agnostic.  It should work with
+   any response content-type.  The mechanics of transclusion, however
+   will depend on a media-type.  For instance, where the transcluded
+   data appears in the response will be different for Hypermedia
+   Application Language (HAL) compared to HTML or Collection+JSON media
+   type.
+
+5.  IANA Considerations
+
+   TBD
+
+6.  Security Considerations
+
+   None.
+
+7.  Normative References
+
+   [RFC2119]  Bradner, S., "RFC-2119", RFC 2119, March 1997.
+
+   [RFC5988]  Nottingham, M., "Web Linking (RFC-5988)", RFC 5988,
+              October 2010.
+
    [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
               June 2014.
+
+
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 4]
+
+Internet-Draft         Transclude for HTTP Prefer         September 2016
+
 
 Author's Address
 
@@ -221,4 +274,7 @@ Author's Address
 
 
 
-Nadareishvili            Expires March 19, 2017                 [Page 4]
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 5]
