@@ -73,7 +73,7 @@ Table of Contents
    3.  Transclude Usage Example  . . . . . . . . . . . . . . . . . .   3
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
    5.  Normative References  . . . . . . . . . . . . . . . . . . . .   3
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
 
 1.  Requirements notation
 
@@ -134,11 +134,16 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
 
 3.  Transclude Usage Example
 
-    Get /blog/1223 HTTP/1.1
-    Host: api.example.org
-    Content-Type: application/json
-    Prefer: transclude=copyright,edit-form,http://rels.example.com/search_form
-    Vary: Prefer,Accept,Accept-Encoding
+   Following is an example of a client asking server to transclude data
+   represented at the copyright, edit-form and "other-form" links.
+   Since "other-form" is not a standard, IANA link relation type, client
+   is using a URI for identifying the link relation type.
+
+       Get /blog/1223 HTTP/1.1
+       Host: api.example.org
+       Content-Type: application/json
+       Prefer: transclude=copyright,edit-form,http://rels.com/other-form
+       Vary: Prefer,Accept,Accept-Encoding
 
 4.  Security Considerations
 
@@ -154,6 +159,17 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
    [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
               June 2014.
 
+
+
+
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 3]
+
+Internet-Draft         Transclude for HTTP Prefer         September 2016
+
+
 Author's Address
 
    Irakli Nadareishvili
@@ -165,4 +181,44 @@ Author's Address
 
 
 
-Nadareishvili            Expires March 19, 2017                 [Page 3]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 4]

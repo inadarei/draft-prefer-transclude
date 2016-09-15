@@ -469,11 +469,12 @@
 <p id="rfc.section.2.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of "link relation type", in this context is as defined by <a href="#RFC5988">[RFC5988]</a>.</p>
 <p id="rfc.section.2.p.6">As a result of using a transclude preference, a client receives all of the required data already embedded in the response output, without the need to make additional network calls.</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#transclude-example" id="transclude-example">Transclude Usage Example</a></h1>
+<p>Following is an example of a client asking server to transclude data represented at the copyright, edit-form and "other-form" links. Since "other-form" is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.  </p>
 <pre>
     Get /blog/1223 HTTP/1.1
     Host: api.example.org
     Content-Type: application/json  
-    Prefer: transclude=copyright,edit-form,http://rels.example.com/search_form
+    Prefer: transclude=copyright,edit-form,http://rels.com/other-form
     Vary: Prefer,Accept,Accept-Encoding
             </pre>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> Security Considerations</h1>
