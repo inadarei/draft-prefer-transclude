@@ -134,11 +134,11 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
 
 3.  Transclude Usage Example
 
-       Get /blog/1223 HTTP/1.1
-       Host: api.example.org
-       Content-Type: application/json
-       Prefer: transclude=teaser,http://linkrels.example.com/search_form
-       Vary: Prefer,Accept,Accept-Encoding
+    Get /blog/1223 HTTP/1.1
+    Host: api.example.org
+    Content-Type: application/json
+    Prefer: transclude=copyright,edit-form,http://rels.example.com/search_form
+    Vary: Prefer,Accept,Accept-Encoding
 
 4.  Security Considerations
 
