@@ -8,7 +8,7 @@ Intended status: Informational
 Expires: March 19, 2017
 
 
-    Transclude Preference for the Prefer Header for HTTP (RFC-7240)
+            Transclude Preference for the HTTP Prefer Header
                 draft-inadarei-prefer-transclude-xml-01
 
 Abstract

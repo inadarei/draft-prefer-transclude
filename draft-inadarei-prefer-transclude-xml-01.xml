@@ -10,7 +10,7 @@
 <rfc ipr="trust200902" docName="draft-inadarei-prefer-transclude-xml-01" category="info">
 
     <front>
-        <title abbrev="Transclude for HTTP Prefer">Transclude Preference for the  Prefer Header for HTTP (RFC-7240)</title>
+        <title abbrev="Transclude for HTTP Prefer">Transclude Preference for the  HTTP Prefer Header</title>
         <author initials='I.' surname="Nadareishvili" fullname='Irakli Nadareishvili'>
             <organization/>
             <address>
