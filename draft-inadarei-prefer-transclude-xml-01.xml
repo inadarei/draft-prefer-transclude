@@ -45,13 +45,13 @@
         <section title="Transclude Usage Example" anchor="transclude-example">
         <figure>
             <preamble>
-        Following is an example of a client asking server to transclude data represented at the copyright, edit-form and "other_form" links. Since "other_form" is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.
+        Following is an example of a client asking server to transclude data represented at the copyright, edit-form and "other-form" links. Since "other-form" is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.
             </preamble>
             <artwork>
     Get /blog/1223 HTTP/1.1
     Host: api.example.org
     Content-Type: application/json  
-    Prefer: transclude=copyright,edit-form,http://rels.example.com/other_form
+    Prefer: transclude=copyright,edit-form,http://rels.com/other-form
     Vary: Prefer,Accept,Accept-Encoding
             </artwork>
         </figure>
