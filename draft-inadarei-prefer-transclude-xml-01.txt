@@ -194,8 +194,9 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
 
    Transclude preference is media-type agnostic.  It should work with
    any response content-type.  The mechanics of transclusion, however
-   will either depend on a response media-type or require a multi-part
-   response with multiple media types in the response.
+   will either depend on capabilities of the response media-type or
+   require a multi-part response with multiple media types in the
+   response.
 
 5.  IANA Considerations
 
@@ -214,7 +215,6 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
 
    [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
               June 2014.
-
 
 
 

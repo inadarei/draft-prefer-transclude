@@ -76,7 +76,7 @@
         </figure>
         </section>
         <section title="Implementation Considerations" anchor="implementation">
-            <t>Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on a response media-type or require a multi-part response with multiple media types in the response.</t> 
+            <t>Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on capabilities of the response media-type or require a multi-part response with multiple media types in the response.</t> 
         </section>
         <section title="IANA Considerations" anchor="iana">
         <t>TBD</t>

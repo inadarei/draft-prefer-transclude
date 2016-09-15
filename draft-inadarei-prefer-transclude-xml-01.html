@@ -497,7 +497,7 @@
             </pre>
 <p>As you can see from this output, server only transcluded copyright and edit-form link relation types, but not the cusotm type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn't familiar with it, or for some other reason.</p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#implementation" id="implementation">Implementation Considerations</a></h1>
-<p id="rfc.section.4.p.1">Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on a response media-type or require a multi-part response with multiple media types in the response.</p>
+<p id="rfc.section.4.p.1">Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on capabilities of the response media-type or require a multi-part response with multiple media types in the response.</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
 <p id="rfc.section.5.p.1">TBD</p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Security Considerations</h1>
