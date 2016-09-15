@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+<?rfc toc="yes" ?>
+<?rfc sortrefs="yes" ?>
+<?rfc symrefs="yes" ?>
+<rfc ipr="trust200902" docName="draft-inadarei-prefer-transclude-xml-01" category="info">
+
+    <front>
+        <title abbrev="Transclude for HTTP Prefer">Transclude preference for the  Prefer Header for HTTP (RFC-7240)</title>
+        <author initials='I.' surname="Nadareishvili" fullname='Irakli Nadareishvili'>
+            <organization/>
+            <address>
+                <uri>http://freshblurbs.com</uri>
+            </address>
+        </author>
+        <date day="15" month="September" year="2016" />
+        <abstract><t>The specification for Transclude preference is an extension to the  Prefer Header for HTTP <xref target="RFC7240" />. It works similar to other preferences defined in <xref target="RFC7240" />, such as: return, respond-async, wait and handling.</t>
+        </abstract>
+        <note title="Note to Readers">
+            <t>Please discuss this draft on the apps-discuss mailing list (<eref target="https://www.ietf.org/mailman/listinfo/apps-discuss"/>).</t>
+            <t>Online access to all versions and files is available on GitHub (<eref target="https://github.com/inadarei/draft-prefer-transclude"/>).</t>
+        </note>
+    </front>
+
+    <middle>
+        <section title="Requirements notation">
+            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+            "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",
+            and "OPTIONAL" in this document are to be interpreted as
+            described in <xref target="RFC2119"/>.</t>
+        </section>
+
+        <section title="Security Considerations">
+        <t>None.</t>
+        </section>
+    </middle>
+
+    <back>
+        <references title='Normative References'>
+            <reference anchor='RFC7240'>
+                <front>
+                <title>Prefer Header for HTTP (RFC-7240)</title>
+                <author initials='J' surname='Snell' fullname='James Snell'>
+                    <organization />
+                </author>
+                <date month='June' year='2014' />
+                <abstract>
+                    <t>This specification defines an HTTP header field that can be used by a client to request that certain behaviors be employed by a server while processing a request.</t>
+                </abstract>
+                </front>
+                <seriesInfo name="RFC" value="7240" />
+            </reference>      
+            <reference anchor='RFC2119'>
+                <front>
+                <title>FC-2119</title>
+                <author initials='S' surname='Bradner' fullname='Scott Bradner'>
+                    <organization />
+                </author>
+                <date month='March' year='1997' />
+                <abstract>
+                    <t> Key words for use in RFCs to Indicate Requirement Levels.</t>
+                </abstract>
+                </front>
+                <seriesInfo name="RFC" value="72221940" />
+            </reference>  
+        </references>
+    </back>
+
+</rfc>
