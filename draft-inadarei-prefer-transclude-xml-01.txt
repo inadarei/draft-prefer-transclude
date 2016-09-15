@@ -70,8 +70,9 @@ Table of Contents
 
    1.  Requirements notation . . . . . . . . . . . . . . . . . . . .   2
    2.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
-   4.  Normative References  . . . . . . . . . . . . . . . . . . . .   3
+   3.  Transclude Usage Example  . . . . . . . . . . . . . . . . . .   3
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   5.  Normative References  . . . . . . . . . . . . . . . . . . . .   3
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   3
 
 1.  Requirements notation
@@ -82,29 +83,28 @@ Table of Contents
 
 2.  Introduction
 
-   "Prefer Header for HTTP" [RFC7240] proposes a new HTTP header that is
-   used to indicate that particular server behaviors are preferred by
+   "Prefer Header for HTTP" [RFC7240] proposes an HTTP header that can
+   be used to indicate that particular server behaviors are preferred by
    the client but are not required for successful completion of the
    request.  It further defines several standard Preferences, such as
-   "return" preference which lets the server know that the client would
-   prefer specific representation of a resource, e.g. full vs. minimal.
+   the "return" preference.  The "return" preference lets the server
+   know that the client would prefer a specific representation of a
+   resource in a response payload, e.g. full representation vs. a
+   minimal one.
 
-   In the age of mobile applications that are very sensitive to network
-   latency and throughput, this allows servers to tune and optimize its
-   response payload based on client preferences, for instance: to only
-   sent a mobile app minimal payload when it doesn't full response.
+   Preferences like the "return" one are critical for mobile scenarios
+   as mobile applications are very sensitive to network latency,
+   throughput and anything that can improve end-user experience, even on
+   resource-constrained networks.  Prefer header allows servers to tune
+   and optimize its response payload based on client preferences, for
+   instance: to only send mobile app a minimal response when it doesn't
+   need full resource.
 
-   Closely related to the size of the payload, is the number of HTTP
-   requests a client needs to make to get all of the required data.
-   When server sends hypermedia responses (e.g. in the case of
-   Hypermedia APIs) some of the response data may be referenced via a
-   URI link instead of being embedded in the payload itself.  This can
-   cause issues for certain clients, such as mobile applications, if
-   they are forced to make multiple requests to get to the needed data.
-
-   Transclude preference notifies the server that the client would
-   prefer the server to proactively transclude certain links (as
-   identified by their link relations) so that once the client receives
+   The size of the payload is not the only preference that can improve
+   user-experience in mobile scenarios, however.  Closely related to the
+   size of the payload, is the number of HTTP requests a client needs to
+   make to get all of the required data.  This is the challenge that
+   "transclude" preference addresses.
 
 
 
@@ -114,14 +114,37 @@ Nadareishvili            Expires March 19, 2017                 [Page 2]
 Internet-Draft         Transclude for HTTP Prefer         September 2016
 
 
-   the resulting payload all of the required content is already embedded
-   in the output.
+   When server sends hypermedia responses (e.g. in the case of
+   Hypermedia APIs) some of the response data may be referenced via a
+   URI link instead of being embedded in the payload itself.  The need
+   to grab data from a link can degrade experience of mobile
+   applications, since they are forced to make multiple requests to per
+   single end-user request.  This is sometimes referred to as "chatty
+   interface" and is a significant problem for mobile and Internet of
+   Things scenarios.
 
-3.  Security Considerations
+   Transclude preference notifies the server that the client would
+   prefer the server to proactively transclude certain content
+   represented by links of indicated link relation types.  The notion of
+   "link relation type", in this context is as defined by [RFC5988].
+
+   As a result of using a transclude preference, a client receives all
+   of the required data already embedded in the response output, without
+   the need to make additional network calls.
+
+3.  Transclude Usage Example
+
+       Get /blog/1223 HTTP/1.1
+       Host: api.example.org
+       Content-Type: application/json
+       Prefer: transclude=teaser,http://linkrels.example.com/search_form
+       Vary: Prefer,Accept,Accept-Encoding
+
+4.  Security Considerations
 
    None.
 
-4.  Normative References
+5.  Normative References
 
    [RFC2119]  Bradner, S., "RFC-2119", RFC 2119, March 1997.
 
@@ -136,29 +159,6 @@ Author's Address
    Irakli Nadareishvili
 
    URI:   http://freshblurbs.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

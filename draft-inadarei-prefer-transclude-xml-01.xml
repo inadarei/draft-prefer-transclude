@@ -35,12 +35,24 @@
         </section>
 
         <section title="Introduction">
-            <t>"Prefer Header for HTTP" <xref target="RFC7240" /> proposes a new HTTP header that is used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as "return" preference which lets the server know that the client would prefer specific representation of a resource, e.g. full vs. minimal.</t>
-            <t>In the age of mobile applications that are very sensitive to network latency and throughput, this allows servers to tune and optimize its response payload based on client preferences, for instance: to only sent a mobile app minimal payload when it doesn't full response.</t>
-            <t>Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. This can cause issues for certain clients, such as mobile applications, if they are forced to make multiple requests to get to the needed data.</t>
-            <t>Transclude preference notifies the server that the client would prefer the server to proactively transclude certain links (as identified by their link relations) so that once the client receives the resulting payload all of the required content is already embedded in the output.</t>
+            <t>"Prefer Header for HTTP" <xref target="RFC7240" /> proposes an HTTP header that can be used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as the "return" preference. The "return" preference lets the server know that the client would prefer a specific representation of a resource in a response payload, e.g. full representation vs. a minimal one.</t>
+            <t>Preferences like the "return" one are critical for mobile scenarios as mobile applications are very sensitive to network latency, throughput and anything that can improve end-user experience, even on resource-constrained networks. Prefer header allows servers to tune and optimize its response payload based on client preferences, for instance: to only send mobile app a minimal response when it doesn't need full resource.</t>
+            <t>The size of the payload is not the only preference that can improve user-experience in mobile scenarios, however. Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. This is the challenge that "transclude" preference addresses.</t>
+            <t>When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. The need to grab data from a link can degrade experience of mobile applications, since they are forced to make multiple requests to per single end-user request. This is sometimes referred to as "chatty interface" and is a significant problem for mobile and Internet of Things scenarios.</t>
+            <t>Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of "link relation type", in this context is as defined by <xref target="RFC5988" />.</t>
+            <t>As a result of using a transclude preference, a client receives all of the required data already embedded in the response output, without the need to make additional network calls.</t>
         </section>
-
+        <section title="Transclude Usage Example" anchor="transclude-example">
+        <figure>
+            <artwork>
+    Get /blog/1223 HTTP/1.1
+    Host: api.example.org
+    Content-Type: application/json  
+    Prefer: transclude=teaser,http://linkrels.example.com/search_form
+    Vary: Prefer,Accept,Accept-Encoding
+            </artwork>
+        </figure>
+        </section>
         <section title="Security Considerations">
         <t>None.</t>
         </section>

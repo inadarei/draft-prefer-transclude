@@ -376,8 +376,9 @@
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Requirements notation"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 Introduction"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations"/>
-<link href="#rfc.references" rel="Chapter" title="4 Normative References"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Transclude Usage Example"/>
+<link href="#rfc.section.4" rel="Chapter" title="4 Security Considerations"/>
+<link href="#rfc.references" rel="Chapter" title="5 Normative References"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -450,8 +451,9 @@
 
   	<li>1.   <a href="#rfc.section.1">Requirements notation</a></li>
 <li>2.   <a href="#rfc.section.2">Introduction</a></li>
-<li>3.   <a href="#rfc.section.3">Security Considerations</a></li>
-<li>4.   <a href="#rfc.references">Normative References</a></li>
+<li>3.   <a href="#rfc.section.3">Transclude Usage Example</a></li>
+<li>4.   <a href="#rfc.section.4">Security Considerations</a></li>
+<li>5.   <a href="#rfc.references">Normative References</a></li>
 <li><a href="#rfc.authors">Author's Address</a></li>
 
 
@@ -460,13 +462,23 @@
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Requirements notation</h1>
 <p id="rfc.section.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">[RFC2119]</a>.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Introduction</h1>
-<p id="rfc.section.2.p.1">"Prefer Header for HTTP" <a href="#RFC7240">[RFC7240]</a> proposes a new HTTP header that is used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as "return" preference which lets the server know that the client would prefer specific representation of a resource, e.g. full vs. minimal.</p>
-<p id="rfc.section.2.p.2">In the age of mobile applications that are very sensitive to network latency and throughput, this allows servers to tune and optimize its response payload based on client preferences, for instance: to only sent a mobile app minimal payload when it doesn't full response.</p>
-<p id="rfc.section.2.p.3">Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. This can cause issues for certain clients, such as mobile applications, if they are forced to make multiple requests to get to the needed data.</p>
-<p id="rfc.section.2.p.4">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain links (as identified by their link relations) so that once the client receives the resulting payload all of the required content is already embedded in the output.</p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Security Considerations</h1>
-<p id="rfc.section.3.p.1">None.</p>
-<h1 id="rfc.references"><a href="#rfc.references">4.</a> Normative References</h1>
+<p id="rfc.section.2.p.1">"Prefer Header for HTTP" <a href="#RFC7240">[RFC7240]</a> proposes an HTTP header that can be used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as the "return" preference. The "return" preference lets the server know that the client would prefer a specific representation of a resource in a response payload, e.g. full representation vs. a minimal one.</p>
+<p id="rfc.section.2.p.2">Preferences like the "return" one are critical for mobile scenarios as mobile applications are very sensitive to network latency, throughput and anything that can improve end-user experience, even on resource-constrained networks. Prefer header allows servers to tune and optimize its response payload based on client preferences, for instance: to only send mobile app a minimal response when it doesn't need full resource.</p>
+<p id="rfc.section.2.p.3">The size of the payload is not the only preference that can improve user-experience in mobile scenarios, however. Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. This is the challenge that "transclude" preference addresses.</p>
+<p id="rfc.section.2.p.4">When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. The need to grab data from a link can degrade experience of mobile applications, since they are forced to make multiple requests to per single end-user request. This is sometimes referred to as "chatty interface" and is a significant problem for mobile and Internet of Things scenarios.</p>
+<p id="rfc.section.2.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of "link relation type", in this context is as defined by <a href="#RFC5988">[RFC5988]</a>.</p>
+<p id="rfc.section.2.p.6">As a result of using a transclude preference, a client receives all of the required data already embedded in the response output, without the need to make additional network calls.</p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#transclude-example" id="transclude-example">Transclude Usage Example</a></h1>
+<pre>
+    Get /blog/1223 HTTP/1.1
+    Host: api.example.org
+    Content-Type: application/json  
+    Prefer: transclude=teaser,http://linkrels.example.com/search_form
+    Vary: Prefer,Accept,Accept-Encoding
+            </pre>
+<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> Security Considerations</h1>
+<p id="rfc.section.4.p.1">None.</p>
+<h1 id="rfc.references"><a href="#rfc.references">5.</a> Normative References</h1>
 <table>
   <tbody>
     <tr>
