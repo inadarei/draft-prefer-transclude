@@ -247,20 +247,20 @@ Content-Type: application/hal+json; charset=utf-8
 Content-Type: application/prs.hal-forms+json
 
 {
-"_links" : {
-    "self" : { "href" : "/create" }
-},
-"_templates" : {
-    "default" : {
-    "title" : "Create",
-    "method" : "post",
-    "contentType" : "application/json",
-    "properties" : [
-        {"name": "title", "required": true, "value": "", "prompt": "Title", },
-        {"name": "completed", "value": "false", "prompt": "Completed"}
-    ]
+    "_links" : {
+        "self" : { "href" : "/create" }
+    },
+    "_templates" : {
+        "default" : {
+            "title" : "Create",
+            "method" : "post",
+            "contentType" : "application/json",
+            "properties" : [
+                {"name": "title", "required": true, "prompt": "Title"},
+                {"name": "completed", "value": "false", "prompt": "Completed"}
+            ]
+        }
     }
-}
 }
 --some boundary string--
 
