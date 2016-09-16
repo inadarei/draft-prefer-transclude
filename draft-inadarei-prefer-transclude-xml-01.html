@@ -378,9 +378,10 @@
 <link href="#rfc.section.2" rel="Chapter" title="2 Introduction"/>
 <link href="#rfc.section.3" rel="Chapter" title="3 Transclude Usage Example"/>
 <link href="#rfc.section.4" rel="Chapter" title="4 Implementation Considerations"/>
-<link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations"/>
-<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations"/>
-<link href="#rfc.references" rel="Chapter" title="7 Normative References"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 Multipart Response Example"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
+<link href="#rfc.references" rel="Chapter" title="8 Normative References"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -455,9 +456,10 @@
 <li>2.   <a href="#rfc.section.2">Introduction</a></li>
 <li>3.   <a href="#rfc.section.3">Transclude Usage Example</a></li>
 <li>4.   <a href="#rfc.section.4">Implementation Considerations</a></li>
-<li>5.   <a href="#rfc.section.5">IANA Considerations</a></li>
-<li>6.   <a href="#rfc.section.6">Security Considerations</a></li>
-<li>7.   <a href="#rfc.references">Normative References</a></li>
+<li>5.   <a href="#rfc.section.5">Multipart Response Example</a></li>
+<li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
+<li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
+<li>8.   <a href="#rfc.references">Normative References</a></li>
 <li><a href="#rfc.authors">Author's Address</a></li>
 
 
@@ -498,11 +500,51 @@
 <p>As you can see from this output, server only transcluded copyright and edit-form link relation types, but not the cusotm type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn't familiar with it, or for some other reason.</p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#implementation" id="implementation">Implementation Considerations</a></h1>
 <p id="rfc.section.4.p.1">Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on capabilities of the response media-type or require a multi-part response with multiple media types in the response.</p>
-<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
-<p id="rfc.section.5.p.1">TBD</p>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Security Considerations</h1>
-<p id="rfc.section.6.p.1">None.</p>
-<h1 id="rfc.references"><a href="#rfc.references">7.</a> Normative References</h1>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#multipart-example" id="multipart-example">Multipart Response Example</a></h1>
+<pre>
+    HTTP/1.1 200 OK
+    Server: nginx/1.4.6 (Ubuntu)
+    Date: Thu, 15 Sep 2016 11:03:32 GMT
+    Content-type: multipart/mixed; boundary="some boundary string"
+
+     --some boundary string
+     Content-Type: application/hal+json; charset=utf-8
+
+    {
+        "_links": {
+            "self": { "href": "/orders" },
+            "edit-form": { "href": "/create" }
+        },
+        "currentlyProcessing": 14,
+        "shippedToday": 20
+    }
+
+     --some boundary string
+     Content-Type: application/prs.hal-forms+json
+
+    {
+    "_links" : {
+        "self" : { "href" : "/create" }
+    },
+    "_templates" : {
+        "default" : {
+        "title" : "Create",
+        "method" : "post",
+        "contentType" : "application/json",
+        "properties" : [
+            {"name" : "title", "required" : true, "value" : "", "prompt" : "Title", "regex" : "", "templated" : false},
+            {"name" : "completed", "required" : false, "value" : "false", "prompt" : "Completed", "regex" : ""}
+        ]
+        }
+    }
+    }
+     --some boundary string--                
+                </pre>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
+<p id="rfc.section.6.p.1">TBD</p>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> Security Considerations</h1>
+<p id="rfc.section.7.p.1">None.</p>
+<h1 id="rfc.references"><a href="#rfc.references">8.</a> Normative References</h1>
 <table>
   <tbody>
     <tr>

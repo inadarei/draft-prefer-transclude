@@ -72,10 +72,11 @@ Table of Contents
    2.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    3.  Transclude Usage Example  . . . . . . . . . . . . . . . . . .   3
    4.  Implementation Considerations . . . . . . . . . . . . . . . .   4
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   4
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   5.  Multipart Response Example  . . . . . . . . . . . . . . . . .   4
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Requirements notation
 
@@ -105,7 +106,6 @@ Table of Contents
    The size of the payload is not the only preference that can improve
    user-experience in mobile scenarios, however.  Closely related to the
    size of the payload, is the number of HTTP requests a client needs to
-
 
 
 
@@ -198,23 +198,23 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
    require a multi-part response with multiple media types in the
    response.
 
-5.  IANA Considerations
+5.  Multipart Response Example
 
-   TBD
 
-6.  Security Considerations
 
-   None.
 
-7.  Normative References
 
-   [RFC2119]  Bradner, S., "RFC-2119", RFC 2119, March 1997.
 
-   [RFC5988]  Nottingham, M., "Web Linking (RFC-5988)", RFC 5988,
-              October 2010.
 
-   [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
-              June 2014.
+
+
+
+
+
+
+
+
+
 
 
 
@@ -225,6 +225,72 @@ Nadareishvili            Expires March 19, 2017                 [Page 4]
 
 Internet-Draft         Transclude for HTTP Prefer         September 2016
 
+
+    HTTP/1.1 200 OK
+    Server: nginx/1.4.6 (Ubuntu)
+    Date: Thu, 15 Sep 2016 11:03:32 GMT
+    Content-type: multipart/mixed; boundary="some boundary string"
+
+     --some boundary string
+     Content-Type: application/hal+json; charset=utf-8
+
+    {
+        "_links": {
+            "self": { "href": "/orders" },
+            "edit-form": { "href": "/create" }
+        },
+        "currentlyProcessing": 14,
+        "shippedToday": 20
+    }
+
+     --some boundary string
+     Content-Type: application/prs.hal-forms+json
+
+    {
+    "_links" : {
+        "self" : { "href" : "/create" }
+    },
+    "_templates" : {
+        "default" : {
+        "title" : "Create",
+        "method" : "post",
+        "contentType" : "application/json",
+        "properties" : [
+            {"name" : "title", "required" : true, "value" : "", "prompt" : "Title", "regex" : "", "templated" : false},
+            {"name" : "completed", "required" : false, "value" : "false", "prompt" : "Completed", "regex" : ""}
+        ]
+        }
+    }
+    }
+     --some boundary string--
+
+6.  IANA Considerations
+
+   TBD
+
+7.  Security Considerations
+
+   None.
+
+
+
+
+
+
+Nadareishvili            Expires March 19, 2017                 [Page 5]
+
+Internet-Draft         Transclude for HTTP Prefer         September 2016
+
+
+8.  Normative References
+
+   [RFC2119]  Bradner, S., "RFC-2119", RFC 2119, March 1997.
+
+   [RFC5988]  Nottingham, M., "Web Linking (RFC-5988)", RFC 5988,
+              October 2010.
+
+   [RFC7240]  Snell, J., "Prefer Header for HTTP (RFC-7240)", RFC 7240,
+              June 2014.
 
 Author's Address
 
@@ -267,14 +333,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-Nadareishvili            Expires March 19, 2017                 [Page 5]
+Nadareishvili            Expires March 19, 2017                 [Page 6]

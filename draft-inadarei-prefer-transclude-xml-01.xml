@@ -78,6 +78,49 @@
         <section title="Implementation Considerations" anchor="implementation">
             <t>Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on capabilities of the response media-type or require a multi-part response with multiple media types in the response.</t> 
         </section>
+        <section title="Multipart Response Example" anchor="multipart-example">
+            <figure>
+                <artwork>
+    HTTP/1.1 200 OK
+    Server: nginx/1.4.6 (Ubuntu)
+    Date: Thu, 15 Sep 2016 11:03:32 GMT
+    Content-type: multipart/mixed; boundary="some boundary string"
+
+     --some boundary string
+     Content-Type: application/hal+json; charset=utf-8
+
+    {
+        "_links": {
+            "self": { "href": "/orders" },
+            "edit-form": { "href": "/create" }
+        },
+        "currentlyProcessing": 14,
+        "shippedToday": 20
+    }
+
+     --some boundary string
+     Content-Type: application/prs.hal-forms+json
+
+    {
+    "_links" : {
+        "self" : { "href" : "/create" }
+    },
+    "_templates" : {
+        "default" : {
+        "title" : "Create",
+        "method" : "post",
+        "contentType" : "application/json",
+        "properties" : [
+            {"name" : "title", "required" : true, "value" : "", "prompt" : "Title", "regex" : "", "templated" : false},
+            {"name" : "completed", "required" : false, "value" : "false", "prompt" : "Completed", "regex" : ""}
+        ]
+        }
+    }
+    }
+     --some boundary string--                
+                </artwork>
+            </figure>
+        </section>
         <section title="IANA Considerations" anchor="iana">
         <t>TBD</t>
         </section>
