@@ -18,7 +18,7 @@
             </address>
         </author>
         <date day="15" month="September" year="2016" />
-        <abstract><t>The specification for Transclude preference is an extension to the  Prefer Header for HTTP <xref target="RFC7240" />. It works similar to other preferences defined in <xref target="RFC7240" />, such as: return, respond-async, wait and handling.</t>
+        <abstract><t>The Transclude preference is a registered behavior for the HTTP Prefer header field. Its purpose is for clients to specify preferences that certain links in a response should be resolved by the server, instead of being served as links that the client can resolve.</t>
         </abstract>
         <note title="Note to Readers">
             <t>Please discuss this draft on the apps-discuss mailing list (<eref target="https://www.ietf.org/mailman/listinfo/apps-discuss"/>).</t>
