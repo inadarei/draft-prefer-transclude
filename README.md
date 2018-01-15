@@ -11,7 +11,9 @@ Link to the HTML version of the latest spec: http://spec.transclude.io
 > gem install kramdown-rfc2629
 > sudo easy_install pip # optional, if you don't already have it
 > sudo pip install xml2rfc
+> .githooks/install.sh # To enable automatic rebuilds on commit
 ```
+
 ## Using
 
 1. Edit draft.md
