@@ -74,7 +74,7 @@ Table of Contents
    4.  Implementation Considerations . . . . . . . . . . . . . . . .   4
    5.  Multipart Response Example  . . . . . . . . . . . . . . . . .   4
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -184,7 +184,7 @@ Internet-Draft         Transclude for HTTP Prefer         September 2016
    Access-Control-Allow-Headers: Content-Type
 
    As you can see from this output, server only transcluded copyright
-   and edit-form link relation types, but not the cusotm type client
+   and edit-form link relation types, but not the custom type client
    requested.  This is because preferences are just suggestions and
    server has no obligation related to them.  In this case, we can
    assume that the server skipped the last link relation type because
@@ -266,14 +266,14 @@ Content-Type: application/prs.hal-forms+json
 
 6.  IANA Considerations
 
-   TBD
+   The HTTP Preference below has been registered by IANA per Section 5.1
+   of RFC 7240 [RFC7240]:
 
-7.  Security Considerations
+      Preference: transclude
 
-   None.
+      Value:
 
-
-
+      Optional Parameters:
 
 
 
@@ -281,6 +281,14 @@ Nadareishvili            Expires March 19, 2017                 [Page 5]
 
 Internet-Draft         Transclude for HTTP Prefer         September 2016
 
+
+      Description:
+
+      Reference: RFC XXXX
+
+7.  Security Considerations
+
+   None.
 
 8.  Normative References
 
@@ -297,14 +305,6 @@ Author's Address
    Irakli Nadareishvili
 
    URI:   http://freshblurbs.com
-
-
-
-
-
-
-
-
 
 
 

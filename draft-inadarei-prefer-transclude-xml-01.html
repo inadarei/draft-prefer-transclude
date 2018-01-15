@@ -373,19 +373,19 @@
   /*]]>*/
   </style>
 
-  <link href="#rfc.toc" rel="Contents"/>
-<link href="#rfc.section.1" rel="Chapter" title="1 Requirements notation"/>
-<link href="#rfc.section.2" rel="Chapter" title="2 Introduction"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 Transclude Usage Example"/>
-<link href="#rfc.section.4" rel="Chapter" title="4 Implementation Considerations"/>
-<link href="#rfc.section.5" rel="Chapter" title="5 Multipart Response Example"/>
-<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
-<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
-<link href="#rfc.references" rel="Chapter" title="8 Normative References"/>
-<link href="#rfc.authors" rel="Chapter"/>
+  <link href="#rfc.toc" rel="Contents">
+<link href="#rfc.section.1" rel="Chapter" title="1 Requirements notation">
+<link href="#rfc.section.2" rel="Chapter" title="2 Introduction">
+<link href="#rfc.section.3" rel="Chapter" title="3 Transclude Usage Example">
+<link href="#rfc.section.4" rel="Chapter" title="4 Implementation Considerations">
+<link href="#rfc.section.5" rel="Chapter" title="5 Multipart Response Example">
+<link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
+<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations">
+<link href="#rfc.references" rel="Chapter" title="8 Normative References">
+<link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.8.4 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Nadareishvili, I." />
@@ -402,20 +402,20 @@
     <tbody>
     
     	<tr>
-  <td class="left">Network Working Group</td>
-  <td class="right">I. Nadareishvili</td>
+<td class="left">Network Working Group</td>
+<td class="right">I. Nadareishvili</td>
 </tr>
 <tr>
-  <td class="left">Internet-Draft</td>
-  <td class="right">September 15, 2016</td>
+<td class="left">Internet-Draft</td>
+<td class="right">September 15, 2016</td>
 </tr>
 <tr>
-  <td class="left">Intended status: Informational</td>
-  <td class="right"></td>
+<td class="left">Intended status: Informational</td>
+<td class="right"></td>
 </tr>
 <tr>
-  <td class="left">Expires: March 19, 2017</td>
-  <td class="right"></td>
+<td class="left">Expires: March 19, 2017</td>
+<td class="right"></td>
 </tr>
 
     	
@@ -425,25 +425,17 @@
   <p class="title">Transclude Preference for the  HTTP Prefer Header<br />
   <span class="filename">draft-inadarei-prefer-transclude-xml-01</span></p>
   
-  <h1 id="rfc.abstract">
-  <a href="#rfc.abstract">Abstract</a>
-</h1>
-<p>The specification for Transclude preference is an extension to the  Prefer Header for HTTP <a href="#RFC7240">[RFC7240]</a>. It works similar to other preferences defined in <a href="#RFC7240">[RFC7240]</a>, such as: return, respond-async, wait and handling.</p>
-<h1>
-  <a>Note to Readers</a>
-</h1>
+  <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+<p>The specification for Transclude preference is an extension to the  Prefer Header for HTTP <a href="#RFC7240" class="xref">[RFC7240]</a>. It works similar to other preferences defined in <a href="#RFC7240" class="xref">[RFC7240]</a>, such as: return, respond-async, wait and handling.</p>
+<h1><a>Note to Readers</a></h1>
 <p>Please discuss this draft on the apps-discuss mailing list (<span>&lt;</span><a href="https://www.ietf.org/mailman/listinfo/apps-discuss">https://www.ietf.org/mailman/listinfo/apps-discuss</a><span>&gt;</span>).</p>
 <p>Online access to all versions and files is available on GitHub (<span>&lt;</span><a href="https://github.com/inadarei/draft-prefer-transclude">https://github.com/inadarei/draft-prefer-transclude</a><span>&gt;</span>).</p>
-<h1 id="rfc.status">
-  <a href="#rfc.status">Status of This Memo</a>
-</h1>
+<h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
 <p>This Internet-Draft will expire on March 19, 2017.</p>
-<h1 id="rfc.copyrightnotice">
-  <a href="#rfc.copyrightnotice">Copyright Notice</a>
-</h1>
+<h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2016 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
@@ -452,29 +444,43 @@
   <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
   <ul class="toc">
 
-  	<li>1.   <a href="#rfc.section.1">Requirements notation</a></li>
-<li>2.   <a href="#rfc.section.2">Introduction</a></li>
-<li>3.   <a href="#rfc.section.3">Transclude Usage Example</a></li>
-<li>4.   <a href="#rfc.section.4">Implementation Considerations</a></li>
-<li>5.   <a href="#rfc.section.5">Multipart Response Example</a></li>
-<li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
-<li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
-<li>8.   <a href="#rfc.references">Normative References</a></li>
-<li><a href="#rfc.authors">Author's Address</a></li>
+  	<li>1.   <a href="#rfc.section.1">Requirements notation</a>
+</li>
+<li>2.   <a href="#rfc.section.2">Introduction</a>
+</li>
+<li>3.   <a href="#rfc.section.3">Transclude Usage Example</a>
+</li>
+<li>4.   <a href="#rfc.section.4">Implementation Considerations</a>
+</li>
+<li>5.   <a href="#rfc.section.5">Multipart Response Example</a>
+</li>
+<li>6.   <a href="#rfc.section.6">IANA Considerations</a>
+</li>
+<li>7.   <a href="#rfc.section.7">Security Considerations</a>
+</li>
+<li>8.   <a href="#rfc.references">Normative References</a>
+</li>
+<li><a href="#rfc.authors">Author's Address</a>
+</li>
 
 
   </ul>
 
-  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Requirements notation</h1>
-<p id="rfc.section.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">[RFC2119]</a>.</p>
-<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
-<p id="rfc.section.2.p.1">"Prefer Header for HTTP" <a href="#RFC7240">[RFC7240]</a> proposes an HTTP header that can be used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as the "return" preference. The "return" preference lets the server know that the client would prefer a specific representation of a resource in a response payload, e.g. full representation vs. a minimal one.</p>
+  <h1 id="rfc.section.1">
+<a href="#rfc.section.1">1.</a> Requirements notation</h1>
+<p id="rfc.section.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#introduction" id="introduction">Introduction</a>
+</h1>
+<p id="rfc.section.2.p.1">"Prefer Header for HTTP" <a href="#RFC7240" class="xref">[RFC7240]</a> proposes an HTTP header that can be used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as the "return" preference. The "return" preference lets the server know that the client would prefer a specific representation of a resource in a response payload, e.g. full representation vs. a minimal one.</p>
 <p id="rfc.section.2.p.2">Preferences like the "return" one are critical for mobile scenarios as mobile applications are very sensitive to network latency, throughput and anything that can improve end-user experience, even on resource-constrained networks. Prefer header allows servers to tune and optimize its response payload based on client preferences, for instance: to only send mobile app a minimal response when it doesn't need full resource.</p>
 <p id="rfc.section.2.p.3">The size of the payload is not the only preference that can improve user-experience in mobile scenarios, however. Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. This is the challenge that "transclude" preference addresses.</p>
 <p id="rfc.section.2.p.4">When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. The need to grab data from a link can degrade experience of mobile applications, since they are forced to make multiple requests to per single end-user request. This is sometimes referred to as "chatty interface" and is a significant problem for mobile and Internet of Things scenarios.</p>
-<p id="rfc.section.2.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of "link relation type", in this context is as defined by <a href="#RFC5988">[RFC5988]</a>.</p>
+<p id="rfc.section.2.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of "link relation type", in this context is as defined by <a href="#RFC5988" class="xref">[RFC5988]</a>.</p>
 <p id="rfc.section.2.p.6">As a result of using a transclude preference, a client receives all of the required data already embedded in the response output, without the need to make additional network calls.</p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#transclude-example" id="transclude-example">Transclude Usage Example</a></h1>
+<h1 id="rfc.section.3">
+<a href="#rfc.section.3">3.</a> <a href="#transclude-example" id="transclude-example">Transclude Usage Example</a>
+</h1>
 <p>Following is an example of a client asking server to transclude data represented at the copyright, edit-form and "other-form" links. Since "other-form" is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.  </p>
 <pre>
 Get /blog/1223 HTTP/1.1
@@ -497,10 +503,14 @@ Preference-Applied: transclude="copyright;edit-form"
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Content-Type            
         </pre>
-<p>As you can see from this output, server only transcluded copyright and edit-form link relation types, but not the cusotm type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn't familiar with it, or for some other reason.</p>
-<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#implementation" id="implementation">Implementation Considerations</a></h1>
+<p>As you can see from this output, server only transcluded copyright and edit-form link relation types, but not the custom type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn't familiar with it, or for some other reason.</p>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#implementation" id="implementation">Implementation Considerations</a>
+</h1>
 <p id="rfc.section.4.p.1">Transclude preference is media-type agnostic. It should work with any response content-type. The mechanics of transclusion, however will either depend on capabilities of the response media-type or require a multi-part response with multiple media types in the response.</p>
-<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#multipart-example" id="multipart-example">Multipart Response Example</a></h1>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#multipart-example" id="multipart-example">Multipart Response Example</a>
+</h1>
 <pre>
 HTTP/1.1 200 OK
 Server: nginx/1.4.6 (Ubuntu)
@@ -540,36 +550,44 @@ Content-Type: application/prs.hal-forms+json
 }
 --some boundary string--                
                 </pre>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
-<p id="rfc.section.6.p.1">TBD</p>
-<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> Security Considerations</h1>
-<p id="rfc.section.7.p.1">None.</p>
-<h1 id="rfc.references"><a href="#rfc.references">8.</a> Normative References</h1>
-<table>
-  <tbody>
-    <tr>
-      <td class="reference">
-        <b id="RFC2119">[RFC2119]</b>
-      </td>
-      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">RFC-2119</a>", RFC 2119, March 1997.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5988">[RFC5988]</b>
-      </td>
-      <td class="top"><a>Nottingham, M.</a>, "<a href="http://tools.ietf.org/html/rfc5988">Web Linking (RFC-5988)</a>", RFC 5988, October 2010.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC7240">[RFC7240]</b>
-      </td>
-      <td class="top"><a>Snell, J.</a>, "<a href="http://tools.ietf.org/html/rfc7240">Prefer Header for HTTP (RFC-7240)</a>", RFC 7240, June 2014.</td>
-    </tr>
-  </tbody>
-</table>
-<h1 id="rfc.authors">
-  <a href="#rfc.authors">Author's Address</a>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#IANA" id="IANA">IANA Considerations</a>
 </h1>
+<p id="rfc.section.6.p.1">The HTTP Preference below has been registered by IANA per Section 5.1 of RFC 7240 <a href="#RFC7240" class="xref">[RFC7240]</a>:</p>
+<p></p>
+
+<ul class="empty">
+<li>Preference: transclude</li>
+<li>Value:</li>
+<li>Optional Parameters:</li>
+<li>Description:</li>
+<li>Reference: RFC XXXX</li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.section.7">
+<a href="#rfc.section.7">7.</a> Security Considerations</h1>
+<p id="rfc.section.7.p.1">None.</p>
+<h1 id="rfc.references">
+<a href="#rfc.references">8.</a> Normative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="RFC2119">[RFC2119]</b></td>
+<td class="top">
+<a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">RFC-2119</a>", RFC 2119, March 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC5988">[RFC5988]</b></td>
+<td class="top">
+<a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc5988">Web Linking (RFC-5988)</a>", RFC 5988, October 2010.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7240">[RFC7240]</b></td>
+<td class="top">
+<a>Snell, J.</a>, "<a href="https://tools.ietf.org/html/rfc7240">Prefer Header for HTTP (RFC-7240)</a>", RFC 7240, June 2014.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">
 	<span class="vcardline">
