@@ -477,7 +477,7 @@
 <p id="rfc.section.1.p.2">Preferences like the &#8220;return&#8221; one are critical for mobile scenarios as mobile applications are very sensitive to network latency, throughput and anything that can improve end-user experience, even on resource-constrained networks.  Prefer header allows servers to tune and optimize its response payload based on client preferences, for instance: to only send mobile app a minimal response when it doesn&#8217;t need full resource.</p>
 <p id="rfc.section.1.p.3">The size of the payload is not the only preference that can improve user-experience in mobile scenarios, however. Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. This is the challenge that &#8220;transclude&#8221; preference addresses.</p>
 <p id="rfc.section.1.p.4">When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. The need to grab data from a link can degrade experience of mobile applications, since they are forced to make multiple requests to per single end-user request. This is sometimes referred to as &#8220;chatty interface&#8221; and is a significant problem for mobile and Internet of Things scenarios.</p>
-<p id="rfc.section.1.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of &#8220;link relation type&#8221;, in this context is as defined by <a href="#RFC5988" class="xref">[RFC5988]</a></p>
+<p id="rfc.section.1.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of &#8220;link relation type&#8221;, in this context is as defined by <a href="#RFC8288" class="xref">[RFC8288]</a></p>
 <p id="rfc.section.1.p.6">As a result of using a transclude preference, a client receives all of the required data already embedded in the response output, without the need to make additional network calls.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#notational-conventions" id="notational-conventions">Notational Conventions</a>
@@ -575,14 +575,14 @@ Content-Type: application/prs.hal-forms+json
 <a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
 </tr>
 <tr>
-<td class="reference"><b id="RFC5988">[RFC5988]</b></td>
-<td class="top">
-<a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc5988">Web Linking</a>", RFC 5988, DOI 10.17487/RFC5988, October 2010.</td>
-</tr>
-<tr>
 <td class="reference"><b id="RFC7240">[RFC7240]</b></td>
 <td class="top">
 <a>Snell, J.</a>, "<a href="https://tools.ietf.org/html/rfc7240">Prefer Header for HTTP</a>", RFC 7240, DOI 10.17487/RFC7240, June 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8288">[RFC8288]</b></td>
+<td class="top">
+<a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc8288">Web Linking</a>", RFC 8288, DOI 10.17487/RFC8288, October 2017.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.appendix.A">

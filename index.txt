@@ -132,7 +132,7 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
    Transclude preference notifies the server that the client would
    prefer the server to proactively transclude certain content
    represented by links of indicated link relation types.  The notion of
-   "link relation type", in this context is as defined by [RFC5988]
+   "link relation type", in this context is as defined by [RFC8288]
 
    As a result of using a transclude preference, a client receives all
    of the required data already embedded in the response output, without
@@ -299,13 +299,13 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
-              DOI 10.17487/RFC5988, October 2010,
-              <https://www.rfc-editor.org/info/rfc5988>.
-
    [RFC7240]  Snell, J., "Prefer Header for HTTP", RFC 7240,
               DOI 10.17487/RFC7240, June 2014,
               <https://www.rfc-editor.org/info/rfc7240>.
+
+   [RFC8288]  Nottingham, M., "Web Linking", RFC 8288,
+              DOI 10.17487/RFC8288, October 2017,
+              <https://www.rfc-editor.org/info/rfc8288>.
 
 8.2.  URIs
 
