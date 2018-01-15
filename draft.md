@@ -156,7 +156,7 @@ multiple media types in the response.
 ~~~
 HTTP/1.1 200 OK
 Server: nginx/1.4.6 (Ubuntu)
-Date: Thu, 15 Sep 2017 11:03:32 GMT
+Date: Thu, 15 Sep 2017 11:07:32 GMT
 Content-type: multipart/mixed; boundary="some boundary string"
 
 --some boundary string

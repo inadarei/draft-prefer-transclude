@@ -6,5 +6,4 @@ projectpath="$(dirname $gitpath)/"
 if test "$projectpath" = './'; then
   projectpath="$(pwd)/"
 fi
-ln -s -f "$projectpath.githooks/pre-commit" "$gitpath/hooks/pre-commit"
 ln -s -f "$projectpath.githooks/pre-push" "$gitpath/hooks/pre-push"
