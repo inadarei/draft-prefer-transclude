@@ -55,7 +55,7 @@ Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
 Vary: Prefer,Accept,Accept-Encoding
             </artwork>
         <postamble>
-    As you can see from the example, the transclude preference expects the value to be enclosed in double quotes, if there're multiple link relation types provided. Further, standard link relations SHOULD be indicated by name while custom link relation types SHOULD be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolons.
+    As you can see from the example, the transclude preference expects the value to be enclosed in double quotes, if there are multiple link relation types provided. Further, standard link relations SHOULD be indicated by name while custom link relation types SHOULD be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolons.
         </postamble>
         </figure>
         <figure>
@@ -72,7 +72,7 @@ Preference-Applied: transclude="copyright;edit-form"
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Content-Type            
         </artwork>
-        <postamble>As you can see from this output, server only transcluded copyright and edit-form link relation types, but not the custom type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn't familiar with it, or for some other reason.</postamble>     
+        <postamble>As you can see from this output, the server only transcluded copyright and edit-form link relation types, but not the custom type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn't familiar with it, or for some other reason.</postamble>     
     </figure>
     </section>
     <section title="Implementation Considerations" anchor="implementation">
