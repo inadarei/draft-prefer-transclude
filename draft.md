@@ -25,7 +25,7 @@ author:
  -
     ins: E. Wilde
     name: Erik Wilde
-    email: dret@ca.com
+    email: erik.wilde@dret.net
     uri: http://dret.net/netdret/
 
 normative:

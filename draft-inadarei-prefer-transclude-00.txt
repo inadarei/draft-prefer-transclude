@@ -177,7 +177,7 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
 
    HTTP/1.1 200 OK
    Server: nginx/1.10.3 (Ubuntu)
-   Date: Sat, 27 Jun 2015 11:05:32 GMT
+   Date: Sat, 27 Jun 2015 11:07:32 GMT
    Content-Type: application/json; charset=utf-8
    Transfer-Encoding: chunked
    Connection: close
@@ -328,7 +328,7 @@ Authors' Addresses
 
    Erik Wilde
 
-   Email: dret@ca.com
+   Email: erik.wilde@dret.net
    URI:   http://dret.net/netdret/
 
 
