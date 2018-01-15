@@ -127,7 +127,7 @@ Example response may look something like the following:
 ~~~
 HTTP/1.1 200 OK
 Server: nginx/1.10.3 (Ubuntu)
-Date: Sat, 27 Jun 2015 10:07:32 GMT
+Date: Sat, 27 Jun 2017 10:07:32 GMT
 Content-Type: application/json; charset=utf-8
 Transfer-Encoding: chunked
 Connection: close
@@ -156,7 +156,7 @@ multiple media types in the response.
 ~~~
 HTTP/1.1 200 OK
 Server: nginx/1.4.6 (Ubuntu)
-Date: Thu, 15 Sep 2016 11:03:32 GMT
+Date: Thu, 15 Sep 2017 11:03:32 GMT
 Content-type: multipart/mixed; boundary="some boundary string"
 
 --some boundary string
