@@ -29,7 +29,7 @@ author:
     uri: http://dret.net/netdret/
 
 normative:
-  RFC5988:
+  RFC8288:
   RFC2119:
   RFC7240:
 
@@ -88,7 +88,7 @@ Things scenarios.
 Transclude preference notifies the server that the client would prefer the
 server to proactively transclude certain content represented by links of
 indicated link relation types. The notion of "link relation type", in this
-context is as defined by {{RFC5988}}
+context is as defined by {{RFC8288}}
 
 As a result of using a transclude preference, a client receives all of the
 required data already embedded in the response output, without the need to make
