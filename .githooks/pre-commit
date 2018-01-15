@@ -1,6 +1,3 @@
 #!/bin/sh
 
-make latest
-git add draft-inadarei-prefer-transclude-*.* index.*
-
-echo "Successfully Rebuilt RFC"
+echo "skipping pre-commit"
