@@ -34,9 +34,8 @@ normative:
   RFC7240:
 
 informative:
-  RFC7230:
-  RFC6838:
-  RFC7231:
+  # RFC7230:
+  # RFC6838:
 
 --- abstract
 
@@ -127,7 +126,7 @@ Example response may look something like the following:
 
 ~~~
 HTTP/1.1 200 OK
-Server: nginx/1.4.6 (Ubuntu)
+Server: nginx/1.10.3 (Ubuntu)
 Date: Sat, 27 Jun 2015 11:03:32 GMT
 Content-Type: application/json; charset=utf-8
 Transfer-Encoding: chunked

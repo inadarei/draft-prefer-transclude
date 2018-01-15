@@ -294,58 +294,6 @@ Reference: RFC XXXX</t>
 
     </references>
 
-    <references title='Informative References'>
-
-
-
-
-
-<reference  anchor="RFC7230" target='https://www.rfc-editor.org/info/rfc7230'>
-<front>
-<title>Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</title>
-<author initials='R.' surname='Fielding' fullname='R. Fielding' role='editor'><organization /></author>
-<author initials='J.' surname='Reschke' fullname='J. Reschke' role='editor'><organization /></author>
-<date year='2014' month='June' />
-<abstract><t>The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed, collaborative, hypertext information systems.  This document provides an overview of HTTP architecture and its associated terminology, defines the &quot;http&quot; and &quot;https&quot; Uniform Resource Identifier (URI) schemes, defines the HTTP/1.1 message syntax and parsing requirements, and describes related security concerns for implementations.</t></abstract>
-</front>
-<seriesInfo name='RFC' value='7230'/>
-<seriesInfo name='DOI' value='10.17487/RFC7230'/>
-</reference>
-
-
-
-<reference  anchor="RFC6838" target='https://www.rfc-editor.org/info/rfc6838'>
-<front>
-<title>Media Type Specifications and Registration Procedures</title>
-<author initials='N.' surname='Freed' fullname='N. Freed'><organization /></author>
-<author initials='J.' surname='Klensin' fullname='J. Klensin'><organization /></author>
-<author initials='T.' surname='Hansen' fullname='T. Hansen'><organization /></author>
-<date year='2013' month='January' />
-<abstract><t>This document defines procedures for the specification and registration of media types for use in HTTP, MIME, and other Internet protocols.  This memo documents an Internet Best Current Practice.</t></abstract>
-</front>
-<seriesInfo name='BCP' value='13'/>
-<seriesInfo name='RFC' value='6838'/>
-<seriesInfo name='DOI' value='10.17487/RFC6838'/>
-</reference>
-
-
-
-<reference  anchor="RFC7231" target='https://www.rfc-editor.org/info/rfc7231'>
-<front>
-<title>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</title>
-<author initials='R.' surname='Fielding' fullname='R. Fielding' role='editor'><organization /></author>
-<author initials='J.' surname='Reschke' fullname='J. Reschke' role='editor'><organization /></author>
-<date year='2014' month='June' />
-<abstract><t>The Hypertext Transfer Protocol (HTTP) is a stateless \%application- level protocol for distributed, collaborative, hypertext information systems.  This document defines the semantics of HTTP/1.1 messages, as expressed by request methods, request header fields, response status codes, and response header fields, along with the payload of messages (metadata and body content) and mechanisms for content negotiation.</t></abstract>
-</front>
-<seriesInfo name='RFC' value='7231'/>
-<seriesInfo name='DOI' value='10.17487/RFC7231'/>
-</reference>
-
-
-
-
-    </references>
 
 
 <section anchor="acknowledgments" title="Acknowledgments">
@@ -356,7 +304,7 @@ Reference: RFC XXXX</t>
   </back>
 
 <!-- ##markdown-source:
-H4sIALcsXVoAA51ZaXMbNxL9jl+Boj9s4iWpw0ccepOKSlZiZW3JK1GbTaVS
+H4sIAJEwXVoAA51ZaXMbNxL9jl+Boj9s4iWpw0ccepOKSlZiZW3JK1GbTaVS
 LnAGJBHNDCYARjLXJf/2fd3AHJQYZyuqsjUzuPp4/bobmkwmIphQ6JmcO1X5
 rGhyLd85vdROV5mWS+tkWGv5ej5/l77L11rl2gm1WDh9s7WQZg9mitxmlSqx
 ualUrpw2k5oHJqFbI3IVMOFw/+CFyPC4sm5D85dWCFO7mQyu8eFwf//r/UOB
@@ -366,62 +314,62 @@ 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
-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
-d6Gya9LnKKOrx0LnK/4rjvgfNU1lhfoaAAA=
+z+B+gGAw/VEcerLfvTx/8QSrxWQykWoBI8JPQsyB1gEk6x7LxkslnV4ZD4zA
+cAu9VjcGkN0F8jWDXIql0UU+lafBy7pxtfW8D63ICkN4AI6kr3VmlpvBYfi8
+VkFm2gVlKgnAXHuYVgqSwNe2wj5+bZuCxKBPtrghkTYsiNfuRjtCGkRVubRL
+zDLVKg7kUvm0o+BTaEmURmaqanebRstUNuj3Z/RfsO8vWCsvxOPHsJ88eXU6
+P7+YybrQypMYpb3R2A4aep0FYyucC11hxmZRGMQnPj1+HI1svG80CeJDsiCW
+5RR2LMWC6KCpIGyQ/yBEeEBiZcK6WTDeWkrY4yUPiWEv7v/tNJ5WWhzjdEZK
+xkPInYOt2/2m6Qxj/3Dnb5NpSpPnhRbiEdGGs3nDKgsx2iK6jtVG8uPHhM67
+O/jaEhogRBWBkxAT/R4N0Hg4SwAgIBqyno6jtXLBZE2hXPJ0B0Xs5lrMuh4P
+ybmLJkjiQPIpbPF7Y2gOieebDJjzy6Zgwio0+w6wodU0U/tAIJbLxuGTk7le
+gsMAIK9viEwlE6Vy+YD8iQWbbE1oo21GCOHGVaMByqdyPhwQg2CDCH6AZXld
+2Vt5H623HABxFWIzhpHJpHAaHz2mqFYRjhvbOIrjSg6iqFabwqp8LPV0NYV+
+RSHvrRY3fooVpalMCU2RCuD/gZqA8LXeVhFz2BOZM/AUFpGRS7swBRQCBpUz
+1pNh0jeh6rqNj+hD6LyB7pU3xF9EEmBByliyAA6qbIMEtEbyWq1reFVRnFQb
+hBCCXHQQMiVQhtW6yifAkpP6Q62dIamhL7IEBO3sMslwNlAOv+btYVBcbBOa
+Kgp765NXmLxCQ8pCAFsHU5r/wsBw3X37yoViMOPA5Lx6CBSyD7GVwuuMdrVV
+wfrnrYlgoYETuu3F7RpqGAS11b76W4DkhOnoxqhYYgBPoiVIt0KBAygW6BMf
+OADgAyMKsuCktyDh6L5Lx3JtbykipvK4QHRjS6fJYTlbaiCFGIgxJjnovWrK
+BWyMYWaEFHiUdpLNSDk2eqmuGRQrHcglsGsfqxzVKIsUhRd2Tptna0zU1Sqp
+NuoJbRiSgGKOZOvBTLDbT2TcFIHkDC/XG+hf6tz0IeTlFxw7sAefQ6mAVOhn
+Hr079V+CK2ype1JJDiRBoc4m5rEkRS5vsEzJq4tTzlQPM5nQMFWeY2Y6tnNp
+gNmXkVkYC2QlpxbxoKWzJfblPcm5ucYY0rwY+BVn9JjrohJkZiIu9IYjFJDN
+4vbsjLIpgqkplju3Yagmw0HeYhCEHZ+23iG7IHS0lx1xYynYQYzgtBA20BEl
+x1JlcBVFGlci3qwqYjvFsWQXhS6HNEPz2mqWATcncvA9ViksdtY5iAjsq7fo
+97PMi++inWdJFhRSIC2Av8dYV8qAZQLt0JFsTFOxHrFL0aa6PDqJw4dYOABO
+PrnVtqw+ejhnNI6IMF7wUR9ipvcpZfFhnIepdry7E+IolnUe/qMtG3IXvoRd
+thn3oUi1BJT0HH4R1GIr+jCAdiPfyPtI7aBvmwDyHstbVBx4jhSge0xRKBpS
+DITXsj+SSUGueyRRk6k0eGwrkDnDNHId+hlJDY2Xo7dXl3PYhH/Ls3N+vjj5
+19Xpxckrer58ffTmTffQzrh8fX71BuMiPfUrj8/fvj05exUXvz36Gb8IaqPz
+d/PT87OjN6PW/GDkrKGWh6MFKi20YBzDnCEWobn2yJCLaBp2ClXxd3es3wCc
+V16Btk4+KCpNhPjeUhIiNxkun3QciGk+uUf5667gZVgO/MneGeJPtOC29caZ
+1Ro+AW+FCfUPUTtLVQ+/jyJUp/KS6WBrJKUTFOltOTSWp0dnRzugPG4FxZoW
+csR2nAipq0Q/QF9JLPFwOSz06dMn8QNie29R2NXeweHhE84aewfTA/Ea1e4M
+9GWmyTZT61biOIbeZI4NZkNy2/vNY9821c8Gtvpm1NnkZWeSl6lBg0Se6uSB
+CcS/FbWWcaPxEarKOqRfk5Mqszl0Yskp7Da2YRL2WkdiJmWTwGN+2RmEXMVk
+qTy8UUWjuUZeEMVmlHUZTrlFy6Hl7w1aF2q6OUJdLMs6rt5BMVSF2hu4AF3b
+97HaHffV7dYCL1NwLLTsaQv8Qh2vvF1zZZc1PkC1XSftWk1cACg0lUGSYER0
+QO1ru63NpvLt59ThuF8QkaNtaAUEXZcmswV0AJJSYPXEROm4sPY6ZiYuKrsa
+d9kG3yxCsMWcPNzfl+f/FJcccTNZrUz1AQNPp8/lF1eLpgrNl+IVX9ZcKgTY
+4Vfyx6aii5tn8uBgtv9k9uRQ/vB2/icofUl1jPM6fNOE5eRFTGHUn7XommFC
+U13rnDaqYheKb4SL/wucfWE/OaKzdf6n8TASR9w+TUh0Z4vJEZloco5pBmc/
+3j0cu0M/k0OFPxcbYIo2YwwyM9etvYB5T2LMXKInsh3oGHNP2JbACao00mc5
+rlUoGLhaEfi30JlqvN66raCo+g3L0fGtVlgQ+xicn6RcK6JGiSrFrOL5bV0s
+YmFcor1MeYMKSCRFzfordPGl7uuPthi9NnVNmRKfCuVTSIgt7TpBAWeKMVQt
+iluEpSpNYdA9c7AZ2DNd4sQClRtcbKUAN85EpxQdZdcPwl8e/OBUm3D/6LaI
+i98Ji6JWFSjZZNxEp4sbzucx3qvNoKNJFRIvjAVPqQH6ymSeC410nMfpXb+B
+fVCGaJOa85oaJ2pdM1UrlIOoIrR/UHoP5LOubR2oySI+mdAtQz+X5RQdcca6
+PjLMvbKGTRYpiXa4aHfo0vdfZI35uhlLkMWlrok1nu9mjcCsUbbH75Xmg85f
+ygVdJSH6vxmxj9tXvqatViO6z9k18BkyQjf1912EJD7yReboPZcJo5mM7/yN
+OhP6IkdrAAVPoz0UaSCBkbwb99N6YtmemwGTAS3AHU9NK0ZZg46hCsXmnbNE
+M6TPTB48TcN+zZEyt7najOiiXNz9BW1r56fQmKXyrPd9ReVDTWUvvvxj+d8H
+DVzQHfS9PVCwK/hx+yuP8J8ceM/juOV4e5ySls15Qo2wuz+cAoy05Dn3c8z9
++XRVh+7FRAl/2Rqkn48jSvjkoijYmC6CYicw4j9AgM4eLOJtyzrQsjkvuxt/
+Zud0LYcdsTsXPfR1qQpP53129+Nu6d3WvF+7t+QQIGM3MCaTmJceIfgAN4OO
+9D4JnsVrsUex3n1Akdu340yQC40sKDmfUIExuFhnruF9qH2+TDfJz8AW1McO
+LlFnw3u4YZpGpoeFZuK8Th3SO9Q+QAXlW/GKuw4emYmLfjndaP8HP/Fyd6Gy
+a9LnKKOrx0LnK/7zjfgfY6G6YfMaAAA=
 
 -->
 
