@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<reference  anchor='RFC5988' target='https://www.rfc-editor.org/info/rfc5988'>
+<front>
+<title>Web Linking</title>
+<author initials='M.' surname='Nottingham' fullname='M. Nottingham'><organization /></author>
+<date year='2010' month='October' />
+<abstract><t>This document specifies relation types for Web links, and defines a registry for them.  It also defines the use of such links in HTTP headers with the Link header field.  [STANDARDS-TRACK]</t></abstract>
+</front>
+<seriesInfo name='RFC' value='5988'/>
+<seriesInfo name='DOI' value='10.17487/RFC5988'/>
+</reference>
