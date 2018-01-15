@@ -1,4 +1,3 @@
 #!/bin/sh
 
-make latest
-echo "Successfully Rebuilt RFC"
+echo "skipping pre-commit"
