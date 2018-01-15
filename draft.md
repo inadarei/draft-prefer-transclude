@@ -197,7 +197,18 @@ Content-Type: application/prs.hal-forms+json
 
 # Security Considerations
 
-None.
+Specific resources transcluded by a client can introduce security
+considerations and concerns beyond those discussed within Prefer Header for 
+HTTP {{RFC7240]}}, or HTTP/1.1 {{RFC7230}} and its associated specification 
+documents (see {{RFC7230}} for the list of associated works). Implementers 
+need to consider implications of including supported media types and implement
+appropriate security measures.
+
+A server could incur greater costs in attempting to comply with a
+trasnclusion preference.  Unconditional compliance from a server could
+allow the use of preferences for denial of service.  A server can
+ignore an expressed preference to avoid expending resources that it
+does not wish to commit.
 
 # IANA Considerations
 
