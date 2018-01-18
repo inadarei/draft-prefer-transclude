@@ -115,7 +115,7 @@ Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
 Vary: Prefer,Accept,Accept-Encoding
 ~~~
 
-As you can see from the example, the transclude preference expects the value 
+As can be seen from the example, the transclude preference expects the value 
 to be enclosed in double quotes, if there are multiple link relation types 
 provided. Further, standard link relations SHOULD be indicated by name while 
 custom link relation types SHOULD be indicated with a unique URI representing 
@@ -137,7 +137,7 @@ Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Content-Type
 ~~~
 
-As you can see from this output, the server only transcluded copyright and 
+As can be seen from this output, the server only transcluded copyright and 
 edit-form link relation types, but not the custom type client requested. This 
 is because preferences are just suggestions and server has no obligation related 
 to them. In this case, we can assume that the server skipped the last link 
