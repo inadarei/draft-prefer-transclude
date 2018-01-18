@@ -88,7 +88,7 @@ Things scenarios.
 Transclude preference notifies the server that the client would prefer the
 server to proactively transclude certain content represented by links of
 indicated link relation types. The notion of "link relation type", in this
-context is as defined by {{RFC8288}}
+context is as defined by Web Linking {{RFC8288}}.
 
 As a result of using a transclude preference, a client receives all of the
 required data already embedded in the response output, without the need to make
@@ -117,10 +117,10 @@ Vary: Prefer,Accept,Accept-Encoding
 
 As can be seen from the example, the transclude preference expects the value 
 to be enclosed in double quotes, if there are multiple link relation types 
-provided. Further, standard link relations SHOULD be indicated by name while 
-custom link relation types SHOULD be indicated with a unique URI representing 
-that link relation. Multiple link relation types MUST be separated by 
-semicolons.
+provided. As required by Web Linking  {{RFC8288}}, registered link relations
+MUST be indicated by a simple string, while extension link relation types MUST
+be indicated with a unique URI representing that link relation. Multiple link
+relation types MUST be separated by semicolon.
 
 Example response may look something like the following:
 
