@@ -77,7 +77,7 @@ the payload, is the number of HTTP requests a client needs to make to get all
 of the required data. This is the challenge that "transclude" preference 
 addresses.
 
-When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) 
+When server sends hypermedia responses (e.g. in the case of hypermedia APIs) 
 some of the response data may be referenced via a URI link instead of being 
 embedded in the payload itself. The need to grab data from a link can degrade 
 experience of mobile applications, since they are forced to make multiple 
