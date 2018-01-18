@@ -56,7 +56,7 @@ The most recent draft is at <https://inadarei.github.io/draft-prefer-transclude/
 
 # Introduction
 
-"Prefer Header for HTTP" {{RFC7240}} proposes an HTTP header that can be used 
+"Prefer Header for HTTP" {{RFC7240}} defines an HTTP header that can be used 
 to indicate that particular server behaviors are preferred by the client but 
 are not required for successful completion of the request. It further defines 
 several standard Preferences, such as the "return" preference. The "return" 
@@ -77,7 +77,7 @@ the payload, is the number of HTTP requests a client needs to make to get all
 of the required data. This is the challenge that "transclude" preference 
 addresses.
 
-When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) 
+When server sends hypermedia responses (e.g. in the case of hypermedia APIs) 
 some of the response data may be referenced via a URI link instead of being 
 embedded in the payload itself. The need to grab data from a link can degrade 
 experience of mobile applications, since they are forced to make multiple 
@@ -88,7 +88,7 @@ Things scenarios.
 Transclude preference notifies the server that the client would prefer the
 server to proactively transclude certain content represented by links of
 indicated link relation types. The notion of "link relation type", in this
-context is as defined by {{RFC8288}}
+context is as defined by Web Linking {{RFC8288}}.
 
 As a result of using a transclude preference, a client receives all of the
 required data already embedded in the response output, without the need to make
@@ -104,8 +104,8 @@ interpreted as described in {{RFC2119}}.
 
 Following is an example of a client asking server to transclude data represented 
 at the copyright, edit-form and "other-form" links. Since "other-form" is not 
-a standard, IANA link relation type, client is using a URI for identifying the 
-link relation type.
+a registered IANA link relation type, the client is using a URI for identifying
+the extension link relation type.
 
 ~~~
 Get /blog/1223 HTTP/1.1
@@ -115,12 +115,12 @@ Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
 Vary: Prefer,Accept,Accept-Encoding
 ~~~
 
-As you can see from the example, the transclude preference expects the value 
+As can be seen from the example, the transclude preference expects the value 
 to be enclosed in double quotes, if there are multiple link relation types 
-provided. Further, standard link relations SHOULD be indicated by name while 
-custom link relation types SHOULD be indicated with a unique URI representing 
-that link relation. Multiple link relation types MUST be separated by 
-semicolons.
+provided. As required by Web Linking  {{RFC8288}}, registered link relations
+MUST be indicated by a simple string, while extension link relation types MUST
+be indicated with a unique URI representing that link relation. Multiple link
+relation types MUST be separated by semicolon.
 
 Example response may look something like the following:
 
@@ -137,11 +137,11 @@ Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Content-Type
 ~~~
 
-As you can see from this output, the server only transcluded copyright and 
+As can be seen from this output, the server only transcluded copyright and 
 edit-form link relation types, but not the custom type client requested. This 
 is because preferences are just suggestions and server has no obligation related 
 to them. In this case, we can assume that the server skipped the last link 
-relation type because maybe it wasn't familiar with it, or for some other 
+relation type because maybe it was not familiar with it, or for some other 
 reason.
 
 # Implementation Considerations
@@ -205,7 +205,7 @@ need to consider implications of including supported media types and implement
 appropriate security measures.
 
 A server could incur greater costs in attempting to comply with a
-trasnclusion preference.  Unconditional compliance from a server could
+transclusion preference.  Unconditional compliance from a server could
 allow the use of preferences for denial of service.  A server can
 ignore an expressed preference to avoid expending resources that it
 does not wish to commit.
