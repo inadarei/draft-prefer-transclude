@@ -381,7 +381,9 @@
 <link href="#rfc.section.5" rel="Chapter" title="5 Multipart Response Example">
 <link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations">
 <link href="#rfc.section.7" rel="Chapter" title="7 IANA Considerations">
-<link href="#rfc.references" rel="Chapter" title="8 Normative References">
+<link href="#rfc.references" rel="Chapter" title="8 References">
+<link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References">
 <link href="#rfc.appendix.A" rel="Chapter" title="A Acknowledgments">
 <link href="#rfc.authors" rel="Chapter">
 
@@ -391,7 +393,7 @@
 
   <meta name="dct.creator" content="Nadareishvili, I. and E. Wilde" />
   <meta name="dct.identifier" content="urn:ietf:id:inadarei-prefer-transclude" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-1-15" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-1-18" />
   <meta name="dct.abstract" content="The Transclude preference is a registered behavior for the HTTP Prefer header field. Its purpose is for clients to specify preferences that certain links in a response should be resolved by the server, instead of being served as links that the client can resolve." />
   <meta name="description" content="The Transclude preference is a registered behavior for the HTTP Prefer header field. Its purpose is for clients to specify preferences that certain links in a response should be resolved by the server, instead of being served as links that the client can resolve." />
 
@@ -415,8 +417,8 @@
 <td class="right">E. Wilde</td>
 </tr>
 <tr>
-<td class="left">Expires: July 19, 2018</td>
-<td class="right">January 15, 2018</td>
+<td class="left">Expires: July 22, 2018</td>
+<td class="right">January 18, 2018</td>
 </tr>
 
     	
@@ -436,7 +438,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 19, 2018.</p>
+<p>This Internet-Draft will expire on July 22, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -460,9 +462,13 @@
 </li>
 <li>7.   <a href="#rfc.section.7">IANA Considerations</a>
 </li>
-<li>8.   <a href="#rfc.references">Normative References</a>
+<li>8.   <a href="#rfc.references">References</a>
 </li>
-<li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgments</a>
+<ul><li>8.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>8.2.   <a href="#rfc.references.2">Informative References</a>
+</li>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgments</a>
 </li>
 <li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
@@ -473,11 +479,11 @@
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
 </h1>
-<p id="rfc.section.1.p.1">&#8220;Prefer Header for HTTP&#8221; <a href="#RFC7240" class="xref">[RFC7240]</a> proposes an HTTP header that can be used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as the &#8220;return&#8221; preference. The &#8220;return&#8221; preference lets the server know that the client would prefer a specific representation of a resource in a response payload, e.g. full representation vs. a minimal one.</p>
+<p id="rfc.section.1.p.1">&#8220;Prefer Header for HTTP&#8221; <a href="#RFC7240" class="xref">[RFC7240]</a> defines an HTTP header that can be used to indicate that particular server behaviors are preferred by the client but are not required for successful completion of the request. It further defines several standard Preferences, such as the &#8220;return&#8221; preference. The &#8220;return&#8221; preference lets the server know that the client would prefer a specific representation of a resource in a response payload, e.g. full representation vs. a minimal one.</p>
 <p id="rfc.section.1.p.2">Preferences like the &#8220;return&#8221; one are critical for mobile scenarios as mobile applications are very sensitive to network latency, throughput and anything that can improve end-user experience, even on resource-constrained networks.  Prefer header allows servers to tune and optimize its response payload based on client preferences, for instance: to only send mobile app a minimal response when it doesn&#8217;t need full resource.</p>
 <p id="rfc.section.1.p.3">The size of the payload is not the only preference that can improve user-experience in mobile scenarios, however. Closely related to the size of the payload, is the number of HTTP requests a client needs to make to get all of the required data. This is the challenge that &#8220;transclude&#8221; preference addresses.</p>
-<p id="rfc.section.1.p.4">When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. The need to grab data from a link can degrade experience of mobile applications, since they are forced to make multiple requests to per single end-user request. This is sometimes referred to as &#8220;chatty interface&#8221; and is a significant problem for mobile and Internet of Things scenarios.</p>
-<p id="rfc.section.1.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of &#8220;link relation type&#8221;, in this context is as defined by <a href="#RFC8288" class="xref">[RFC8288]</a></p>
+<p id="rfc.section.1.p.4">When server sends hypermedia responses (e.g. in the case of hypermedia APIs) some of the response data may be referenced via a URI link instead of being embedded in the payload itself. The need to grab data from a link can degrade experience of mobile applications, since they are forced to make multiple requests to per single end-user request. This is sometimes referred to as &#8220;chatty interface&#8221; and is a significant problem for mobile and Internet of Things scenarios.</p>
+<p id="rfc.section.1.p.5">Transclude preference notifies the server that the client would prefer the server to proactively transclude certain content represented by links of indicated link relation types. The notion of &#8220;link relation type&#8221;, in this context is as defined by Web Linking <a href="#RFC8288" class="xref">[RFC8288]</a>.</p>
 <p id="rfc.section.1.p.6">As a result of using a transclude preference, a client receives all of the required data already embedded in the response output, without the need to make additional network calls.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#notational-conventions" id="notational-conventions">Notational Conventions</a>
@@ -486,7 +492,7 @@
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#transclude-usage-example" id="transclude-usage-example">Transclude Usage Example</a>
 </h1>
-<p id="rfc.section.3.p.1">Following is an example of a client asking server to transclude data represented at the copyright, edit-form and &#8220;other-form&#8221; links. Since &#8220;other-form&#8221; is not a standard, IANA link relation type, client is using a URI for identifying the link relation type.</p>
+<p id="rfc.section.3.p.1">Following is an example of a client asking server to transclude data represented at the copyright, edit-form and &#8220;other-form&#8221; links. Since &#8220;other-form&#8221; is not a registered IANA link relation type, the client is using a URI for identifying the extension link relation type.</p>
 <pre>
 Get /blog/1223 HTTP/1.1
 Host: api.example.org
@@ -494,7 +500,7 @@ Content-Type: application/json
 Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
 Vary: Prefer,Accept,Accept-Encoding
 </pre>
-<p id="rfc.section.3.p.2">As you can see from the example, the transclude preference expects the value to be enclosed in double quotes, if there are multiple link relation types provided. Further, standard link relations SHOULD be indicated by name while custom link relation types SHOULD be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolons.</p>
+<p id="rfc.section.3.p.2">As can be seen from the example, the transclude preference expects the value to be enclosed in double quotes, if there are multiple link relation types provided. As required by Web Linking  <a href="#RFC8288" class="xref">[RFC8288]</a>, registered link relations MUST be indicated by a simple string, while extension link relation types MUST be indicated with a unique URI representing that link relation. Multiple link relation types MUST be separated by semicolon.</p>
 <p id="rfc.section.3.p.3">Example response may look something like the following:</p>
 <pre>
 HTTP/1.1 200 OK
@@ -508,7 +514,7 @@ Preference-Applied: transclude="copyright;edit-form"
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Content-Type
 </pre>
-<p id="rfc.section.3.p.4">As you can see from this output, the server only transcluded copyright and edit-form link relation types, but not the custom type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it wasn&#8217;t familiar with it, or for some other reason.</p>
+<p id="rfc.section.3.p.4">As can be seen from this output, the server only transcluded copyright and edit-form link relation types, but not the custom type client requested. This is because preferences are just suggestions and server has no obligation related to them. In this case, we can assume that the server skipped the last link relation type because maybe it was not familiar with it, or for some other reason.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#implementation-considerations" id="implementation-considerations">Implementation Considerations</a>
 </h1>
@@ -560,14 +566,17 @@ Content-Type: application/prs.hal-forms+json
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
-<p id="rfc.section.6.p.1">None.</p>
+<p id="rfc.section.6.p.1">Specific resources transcluded by a client can introduce security considerations and concerns beyond those discussed within Prefer Header for HTTP <a href="#RFC7240" class="xref">[RFC7240]</a>, or HTTP/1.1 <a href="#RFC7230" class="xref">[RFC7230]</a> and its associated specification documents (see <a href="#RFC7230" class="xref">[RFC7230]</a> for the list of associated works). Implementers need to consider implications of including supported media types and implement appropriate security measures.</p>
+<p id="rfc.section.6.p.2">A server could incur greater costs in attempting to comply with a transclusion preference.  Unconditional compliance from a server could allow the use of preferences for denial of service.  A server can ignore an expressed preference to avoid expending resources that it does not wish to commit.</p>
 <h1 id="rfc.section.7">
 <a href="#rfc.section.7">7.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
 <p id="rfc.section.7.p.1">The HTTP Preference below is being registered with IANA per Section 5.1 of <a href="#RFC7240" class="xref">[RFC7240]</a>:</p>
 <p id="rfc.section.7.p.2">Preference: transclude Value: Optional Parameters: Description: Reference: RFC XXXX</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">8.</a> Normative References</h1>
+<a href="#rfc.references">8.</a> References</h1>
+<h1 id="rfc.references.1">
+<a href="#rfc.references.1">8.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
@@ -585,6 +594,13 @@ Content-Type: application/prs.hal-forms+json
 <a>Nottingham, M.</a>, "<a href="https://tools.ietf.org/html/rfc8288">Web Linking</a>", RFC 8288, DOI 10.17487/RFC8288, October 2017.</td>
 </tr>
 </tbody></table>
+<h1 id="rfc.references.2">
+<a href="#rfc.references.2">8.2.</a> Informative References</h1>
+<table><tbody><tr>
+<td class="reference"><b id="RFC7230">[RFC7230]</b></td>
+<td class="top">
+<a>Fielding, R.</a> and <a>J. Reschke</a>, "<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>", RFC 7230, DOI 10.17487/RFC7230, June 2014.</td>
+</tr></tbody></table>
 <h1 id="rfc.appendix.A">
 <a href="#rfc.appendix.A">Appendix A.</a> <a href="#acknowledgments" id="acknowledgments">Acknowledgments</a>
 </h1>

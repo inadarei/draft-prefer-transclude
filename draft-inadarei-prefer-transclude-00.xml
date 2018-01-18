@@ -78,7 +78,7 @@ that the client can resolve.</t>
 
 <section anchor="introduction" title="Introduction">
 
-<t>“Prefer Header for HTTP” <xref target="RFC7240"/> proposes an HTTP header that can be used 
+<t>“Prefer Header for HTTP” <xref target="RFC7240"/> defines an HTTP header that can be used 
 to indicate that particular server behaviors are preferred by the client but 
 are not required for successful completion of the request. It further defines 
 several standard Preferences, such as the “return” preference. The “return” 
@@ -99,7 +99,7 @@ the payload, is the number of HTTP requests a client needs to make to get all
 of the required data. This is the challenge that “transclude” preference 
 addresses.</t>
 
-<t>When server sends hypermedia responses (e.g. in the case of Hypermedia APIs) 
+<t>When server sends hypermedia responses (e.g. in the case of hypermedia APIs) 
 some of the response data may be referenced via a URI link instead of being 
 embedded in the payload itself. The need to grab data from a link can degrade 
 experience of mobile applications, since they are forced to make multiple 
@@ -110,7 +110,7 @@ Things scenarios.</t>
 <t>Transclude preference notifies the server that the client would prefer the
 server to proactively transclude certain content represented by links of
 indicated link relation types. The notion of “link relation type”, in this
-context is as defined by <xref target="RFC8288"/></t>
+context is as defined by Web Linking <xref target="RFC8288"/>.</t>
 
 <t>As a result of using a transclude preference, a client receives all of the
 required data already embedded in the response output, without the need to make
@@ -128,8 +128,8 @@ interpreted as described in <xref target="RFC2119"/>.</t>
 
 <t>Following is an example of a client asking server to transclude data represented 
 at the copyright, edit-form and “other-form” links. Since “other-form” is not 
-a standard, IANA link relation type, client is using a URI for identifying the 
-link relation type.</t>
+a registered IANA link relation type, the client is using a URI for identifying
+the extension link relation type.</t>
 
 <figure><artwork><![CDATA[
 Get /blog/1223 HTTP/1.1
@@ -139,12 +139,12 @@ Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
 Vary: Prefer,Accept,Accept-Encoding
 ]]></artwork></figure>
 
-<t>As you can see from the example, the transclude preference expects the value 
+<t>As can be seen from the example, the transclude preference expects the value 
 to be enclosed in double quotes, if there are multiple link relation types 
-provided. Further, standard link relations SHOULD be indicated by name while 
-custom link relation types SHOULD be indicated with a unique URI representing 
-that link relation. Multiple link relation types MUST be separated by 
-semicolons.</t>
+provided. As required by Web Linking  <xref target="RFC8288"/>, registered link relations
+MUST be indicated by a simple string, while extension link relation types MUST
+be indicated with a unique URI representing that link relation. Multiple link
+relation types MUST be separated by semicolon.</t>
 
 <t>Example response may look something like the following:</t>
 
@@ -161,11 +161,11 @@ Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: Content-Type
 ]]></artwork></figure>
 
-<t>As you can see from this output, the server only transcluded copyright and 
+<t>As can be seen from this output, the server only transcluded copyright and 
 edit-form link relation types, but not the custom type client requested. This 
 is because preferences are just suggestions and server has no obligation related 
 to them. In this case, we can assume that the server skipped the last link 
-relation type because maybe it wasn’t familiar with it, or for some other 
+relation type because maybe it was not familiar with it, or for some other 
 reason.</t>
 
 </section>
@@ -226,13 +226,13 @@ Content-Type: application/prs.hal-forms+json
 
 <t>Specific resources transcluded by a client can introduce security
 considerations and concerns beyond those discussed within Prefer Header for 
-HTTP <xref target="RFC7240]"/>, or HTTP/1.1 <xref target="RFC7230"/> and its associated specification 
+HTTP <xref target="RFC7240"/>, or HTTP/1.1 <xref target="RFC7230"/> and its associated specification 
 documents (see <xref target="RFC7230"/> for the list of associated works). Implementers 
 need to consider implications of including supported media types and implement
 appropriate security measures.</t>
 
 <t>A server could incur greater costs in attempting to comply with a
-trasnclusion preference.  Unconditional compliance from a server could
+transclusion preference.  Unconditional compliance from a server could
 allow the use of preferences for denial of service.  A server can
 ignore an expressed preference to avoid expending resources that it
 does not wish to commit.</t>
@@ -305,6 +305,28 @@ Reference: RFC XXXX</t>
 
     </references>
 
+    <references title='Informative References'>
+
+
+
+
+
+<reference  anchor="RFC7230" target='https://www.rfc-editor.org/info/rfc7230'>
+<front>
+<title>Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</title>
+<author initials='R.' surname='Fielding' fullname='R. Fielding' role='editor'><organization /></author>
+<author initials='J.' surname='Reschke' fullname='J. Reschke' role='editor'><organization /></author>
+<date year='2014' month='June' />
+<abstract><t>The Hypertext Transfer Protocol (HTTP) is a stateless application-level protocol for distributed, collaborative, hypertext information systems.  This document provides an overview of HTTP architecture and its associated terminology, defines the &quot;http&quot; and &quot;https&quot; Uniform Resource Identifier (URI) schemes, defines the HTTP/1.1 message syntax and parsing requirements, and describes related security concerns for implementations.</t></abstract>
+</front>
+<seriesInfo name='RFC' value='7230'/>
+<seriesInfo name='DOI' value='10.17487/RFC7230'/>
+</reference>
+
+
+
+
+    </references>
 
 
 <section anchor="acknowledgments" title="Acknowledgments">
@@ -315,78 +337,79 @@ Reference: RFC XXXX</t>
   </back>
 
 <!-- ##markdown-source:
-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
+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
+Ff8Dd5+6O/YdAAA=
 
 -->
 

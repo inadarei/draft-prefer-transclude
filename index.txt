@@ -5,7 +5,7 @@
 Network Working Group                                   I. Nadareishvili
 Internet-Draft
 Intended status: Informational                                  E. Wilde
-Expires: July 19, 2018                                  January 15, 2018
+Expires: July 22, 2018                                  January 18, 2018
 
 
             Transclude Preference for the HTTP Prefer Header
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 19, 2018.
+   This Internet-Draft will expire on July 22, 2018.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Nadareishvili & Wilde     Expires July 19, 2018                 [Page 1]
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 1]
 
 Internet-Draft         Transclude for HTTP Prefer           January 2018
 
@@ -84,14 +84,15 @@ Table of Contents
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
-     8.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
-   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .   6
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   6
+     8.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Appendix A.  Acknowledgments  . . . . . . . . . . . . . . . . . .   7
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
 
-   "Prefer Header for HTTP" [RFC7240] proposes an HTTP header that can
-   be used to indicate that particular server behaviors are preferred by
+   "Prefer Header for HTTP" [RFC7240] defines an HTTP header that can be
+   used to indicate that particular server behaviors are preferred by
    the client but are not required for successful completion of the
    request.  It further defines several standard Preferences, such as
    the "return" preference.  The "return" preference lets the server
@@ -104,15 +105,17 @@ Table of Contents
    throughput and anything that can improve end-user experience, even on
    resource-constrained networks.  Prefer header allows servers to tune
    and optimize its response payload based on client preferences, for
-   instance: to only send mobile app a minimal response when it doesn't
-   need full resource.
 
 
 
-Nadareishvili & Wilde     Expires July 19, 2018                 [Page 2]
+
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 2]
 
 Internet-Draft         Transclude for HTTP Prefer           January 2018
 
+
+   instance: to only send mobile app a minimal response when it doesn't
+   need full resource.
 
    The size of the payload is not the only preference that can improve
    user-experience in mobile scenarios, however.  Closely related to the
@@ -121,7 +124,7 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
    "transclude" preference addresses.
 
    When server sends hypermedia responses (e.g. in the case of
-   Hypermedia APIs) some of the response data may be referenced via a
+   hypermedia APIs) some of the response data may be referenced via a
    URI link instead of being embedded in the payload itself.  The need
    to grab data from a link can degrade experience of mobile
    applications, since they are forced to make multiple requests to per
@@ -132,7 +135,8 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
    Transclude preference notifies the server that the client would
    prefer the server to proactively transclude certain content
    represented by links of indicated link relation types.  The notion of
-   "link relation type", in this context is as defined by [RFC8288]
+   "link relation type", in this context is as defined by Web Linking
+   [RFC8288].
 
    As a result of using a transclude preference, a client receives all
    of the required data already embedded in the response output, without
@@ -148,8 +152,9 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
 
    Following is an example of a client asking server to transclude data
    represented at the copyright, edit-form and "other-form" links.
-   Since "other-form" is not a standard, IANA link relation type, client
-   is using a URI for identifying the link relation type.
+   Since "other-form" is not a registered IANA link relation type, the
+   client is using a URI for identifying the extension link relation
+   type.
 
    Get /blog/1223 HTTP/1.1
    Host: api.example.org
@@ -157,21 +162,21 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
    Prefer: transclude="copyright;edit-form;http://rels.io/other-form"
    Vary: Prefer,Accept,Accept-Encoding
 
-   As you can see from the example, the transclude preference expects
-   the value to be enclosed in double quotes, if there are multiple link
-   relation types provided.  Further, standard link relations SHOULD be
-   indicated by name while custom link relation types SHOULD be
 
 
 
-
-Nadareishvili & Wilde     Expires July 19, 2018                 [Page 3]
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 3]
 
 Internet-Draft         Transclude for HTTP Prefer           January 2018
 
 
-   indicated with a unique URI representing that link relation.
-   Multiple link relation types MUST be separated by semicolons.
+   As can be seen from the example, the transclude preference expects
+   the value to be enclosed in double quotes, if there are multiple link
+   relation types provided.  As required by Web Linking [RFC8288],
+   registered link relations MUST be indicated by a simple string, while
+   extension link relation types MUST be indicated with a unique URI
+   representing that link relation.  Multiple link relation types MUST
+   be separated by semicolon.
 
    Example response may look something like the following:
 
@@ -186,12 +191,12 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
    Access-Control-Allow-Origin: *
    Access-Control-Allow-Headers: Content-Type
 
-   As you can see from this output, the server only transcluded
+   As can be seen from this output, the server only transcluded
    copyright and edit-form link relation types, but not the custom type
    client requested.  This is because preferences are just suggestions
    and server has no obligation related to them.  In this case, we can
    assume that the server skipped the last link relation type because
-   maybe it wasn't familiar with it, or for some other reason.
+   maybe it was not familiar with it, or for some other reason.
 
 4.  Implementation Considerations
 
@@ -216,12 +221,7 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
 
 
 
-
-
-
-
-
-Nadareishvili & Wilde     Expires July 19, 2018                 [Page 4]
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 4]
 
 Internet-Draft         Transclude for HTTP Prefer           January 2018
 
@@ -268,19 +268,25 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
 
 6.  Security Considerations
 
-   None.
+   Specific resources transcluded by a client can introduce security
+   considerations and concerns beyond those discussed within Prefer
+   Header for HTTP [RFC7240], or HTTP/1.1 [RFC7230] and its associated
+   specification documents (see [RFC7230] for the list of associated
+   works).  Implementers need to consider implications of including
+   supported media types and implement appropriate security measures.
 
 
 
-
-
-
-
-
-Nadareishvili & Wilde     Expires July 19, 2018                 [Page 5]
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 5]
 
 Internet-Draft         Transclude for HTTP Prefer           January 2018
 
+
+   A server could incur greater costs in attempting to comply with a
+   transclusion preference.  Unconditional compliance from a server
+   could allow the use of preferences for denial of service.  A server
+   can ignore an expressed preference to avoid expending resources that
+   it does not wish to commit.
 
 7.  IANA Considerations
 
@@ -307,11 +313,30 @@ Internet-Draft         Transclude for HTTP Prefer           January 2018
               DOI 10.17487/RFC8288, October 2017,
               <https://www.rfc-editor.org/info/rfc8288>.
 
-8.2.  URIs
+8.2.  Informative References
+
+   [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <https://www.rfc-editor.org/info/rfc7230>.
+
+8.3.  URIs
 
    [1] https://github.com/inadarei/draft-prefer-transclude/issues
 
    [2] https://inadarei.github.io/draft-prefer-transclude/
+
+
+
+
+
+
+
+
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 6]
+
+Internet-Draft         Transclude for HTTP Prefer           January 2018
+
 
 Appendix A.  Acknowledgments
 
@@ -333,4 +358,35 @@ Authors' Addresses
 
 
 
-Nadareishvili & Wilde     Expires July 19, 2018                 [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nadareishvili & Wilde     Expires July 22, 2018                 [Page 7]
