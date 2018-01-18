@@ -56,7 +56,7 @@ The most recent draft is at <https://inadarei.github.io/draft-prefer-transclude/
 
 # Introduction
 
-"Prefer Header for HTTP" {{RFC7240}} proposes an HTTP header that can be used 
+"Prefer Header for HTTP" {{RFC7240}} defines an HTTP header that can be used 
 to indicate that particular server behaviors are preferred by the client but 
 are not required for successful completion of the request. It further defines 
 several standard Preferences, such as the "return" preference. The "return" 
