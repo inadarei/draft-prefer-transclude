@@ -141,7 +141,7 @@ As can be seen from this output, the server only transcluded copyright and
 edit-form link relation types, but not the custom type client requested. This 
 is because preferences are just suggestions and server has no obligation related 
 to them. In this case, we can assume that the server skipped the last link 
-relation type because maybe it wasn't familiar with it, or for some other 
+relation type because maybe it was not familiar with it, or for some other 
 reason.
 
 # Implementation Considerations
