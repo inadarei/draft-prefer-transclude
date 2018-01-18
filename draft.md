@@ -104,8 +104,8 @@ interpreted as described in {{RFC2119}}.
 
 Following is an example of a client asking server to transclude data represented 
 at the copyright, edit-form and "other-form" links. Since "other-form" is not 
-a standard, IANA link relation type, client is using a URI for identifying the 
-link relation type.
+a registered IANA link relation type, the client is using a URI for identifying
+the extension link relation type.
 
 ~~~
 Get /blog/1223 HTTP/1.1
