@@ -205,7 +205,7 @@ need to consider implications of including supported media types and implement
 appropriate security measures.
 
 A server could incur greater costs in attempting to comply with a
-trasnclusion preference.  Unconditional compliance from a server could
+transclusion preference.  Unconditional compliance from a server could
 allow the use of preferences for denial of service.  A server can
 ignore an expressed preference to avoid expending resources that it
 does not wish to commit.
